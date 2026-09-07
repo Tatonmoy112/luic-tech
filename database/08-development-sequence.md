@@ -174,3 +174,8 @@ The database critical path is DBT-001–012 -> DBT-013–021 -> DBT-022–028 ->
 ## B002 foundation evidence
 
 [BUILD-005 / B002](../context/aidlc/bolts/B002-foundation.md) implements restricted local logins, immutable migration history, ownership schemas and rebuild/replay verification. This is partial local evidence for the related DBT design/implementation inputs, not separate duplicate delivery credit. Full environment/production privileges and later domain structures remain pending.
+
+
+## U02/B003 implementation evidence
+
+DBT-029/031 have bounded local implementation evidence through BUILD-007/008 under AUTH-006: seven IAM tables, identity uniqueness, owned address/default constraints, current grants/revocation and protected staff bootstrap audit. [B003](../context/aidlc/bolts/B003-identity.md) records PostgreSQL 18.4 migration/replay/FK/role-denial/rollback and identity races; Windows 161 passed/six skips and clean Linux all 167 passed. These are design-task references to the same implementation, not separate task counts. DBT-030 guest_order_access is deferred to BUILD-018; real identity decisions and human acceptance remain pending. BUILD-012 must preserve and extend the early staff audit for the full dictionary projection.

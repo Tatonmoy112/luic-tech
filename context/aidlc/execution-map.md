@@ -1,6 +1,6 @@
 # AI-DLC execution map
 
-**Status:** U01 In progress; B001 In review and B002 implemented/verified and In review under AUTH-005. Later Units remain Not started. This is an execution index over existing task dependencies, not a replacement backlog.
+**Status:** U01 and U02 In progress; B001/B002/B003 In review. U02 BUILD-007/008 implemented/verified under AUTH-006. Other Units remain Not started. This is an execution index over existing task dependencies, not a replacement backlog.
 
 ## Existing plan to AI-DLC lifecycle
 
@@ -46,6 +46,7 @@ Existing BE/DBT rows and requirement groups are referenced within each Bolt by t
 | --- | --- | --- | --- | --- |
 | B001 | U01 | Compatible pinned core, API/worker skeleton and validated local configuration | AUTH-004; DEV-PHYSICAL-BD revision 1 | [BUILD-001/002/003 evidence ready, In review](bolts/B001-foundation.md); human acceptance pending |
 | B002 | U01 | Request/error foundation, PostgreSQL transactions and basic telemetry/shutdown | AUTH-005 and verified B001 technical evidence; B001 human acceptance remains pending | [BUILD-004/005/006 evidence](bolts/B002-foundation.md); real local PostgreSQL, human acceptance pending |
+| B003 | U02 | Signed local identity, protected bootstrap, owned profiles/addresses and audited current staff grants | AUTH-006 and verified B002 technical foundation; prior human acceptance pending | [BUILD-007/008 evidence](bolts/B003-identity.md); 167 Linux tests pass, human acceptance pending; BUILD-034/ADAPT-008 excluded |
 
 The [U01 record](units/U01-foundation.md) links both foundation Bolts and their evidence. Future Bolt records are created from the template when selected. Do not create hundreds of empty Bolt files or run every Unit together. The first catalog demo still requires BUILD-007 through BUILD-013 after the foundation; B001 is not a completed commerce backend.
 

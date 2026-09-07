@@ -39,7 +39,7 @@ export class Database {
     if (this.stopping) return false;
     try {
       const result = await this.pool.query('SELECT hash FROM drizzle.__drizzle_migrations ORDER BY created_at');
-      if (result.rows.length !== 1 || result.rows[0].hash !== FOUNDATION_HASH) return false;
+      if (result.rows.length !== MIGRATION_HASHES.length || result.rows.some((row, index) => row.hash !== MIGRATION_HASHES[index])) return false;
       const schemas = await this.pool.query("SELECT count(*) FROM pg_namespace WHERE nspname = ANY($1::text[])",
         [['iam', 'catalog', 'pricing', 'inventory', 'sales', 'finance', 'fulfillment', 'platform']]);
       return schemas.rows[0].count === '8';
@@ -107,3 +107,6 @@ export class Database {
 
 // Updated from the immutable reviewed migration; checked against the file in tests.
 export const FOUNDATION_HASH = '699076c71a6da2cc4a7f2c88bbab2f5976fde815ac60fe978c236f8dc1f3a201';
+
+export const IDENTITY_HASH = "9d7a5f5db79ab27e7d12034882a6e921baa01070d8a66a30319a691dff45177c";
+export const MIGRATION_HASHES = Object.freeze([FOUNDATION_HASH, IDENTITY_HASH]);

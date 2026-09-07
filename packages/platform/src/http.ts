@@ -6,12 +6,13 @@ import { SpanStatusCode } from '@opentelemetry/api';
 import { DatabaseFailure } from './database';
 import { requestContext, SafeCode, SafeRoute, Telemetry } from './telemetry';
 
-const statusCode: Record<number, SafeCode> = { 400: 'BAD_REQUEST', 404: 'NOT_FOUND',
+const statusCode: Record<number, SafeCode> = { 400: 'BAD_REQUEST', 401: 'UNAUTHORIZED', 403: 'FORBIDDEN', 404: 'NOT_FOUND', 412: 'PRECONDITION_FAILED', 428: 'PRECONDITION_REQUIRED',
   409: 'CONFLICT', 413: 'PAYLOAD_TOO_LARGE', 415: 'BAD_REQUEST', 503: 'UNAVAILABLE' };
 const titles: Record<SafeCode, string> = { OK: 'OK', BAD_REQUEST: 'Invalid request', NOT_FOUND: 'Not found',
   PAYLOAD_TOO_LARGE: 'Request too large', UNAVAILABLE: 'Service unavailable', CONFLICT: 'Conflict',
   INTERNAL_ERROR: 'Internal error', DB_BUSY: 'Database busy', COMMIT_UNKNOWN: 'Outcome unknown',
-  ROLLED_BACK: 'Operation rolled back', DRAINING: 'Service stopping' };
+  ROLLED_BACK: 'Operation rolled back', DRAINING: 'Service stopping', UNAUTHORIZED: 'Authentication required', FORBIDDEN: 'Forbidden',
+  PRECONDITION_FAILED: 'Stale version', PRECONDITION_REQUIRED: 'Version required' };
 function routeOf(req: Request): SafeRoute {
   const path = req.path;
   return path === '/health/live' || path === '/health/ready' ? path : 'unmatched';
@@ -30,9 +31,10 @@ export class SafeExceptionFilter implements ExceptionFilter {
     let status = error instanceof HttpException ? error.getStatus() : 500;
     let code = statusCode[status] ?? 'INTERNAL_ERROR';
     if (error instanceof DatabaseFailure) {
-      status = error.code === 'CONFLICT' ? 409 : 503; code = error.code;
+      status = Number(Object.entries(statusCode).find(([, value]) => value === error.code)?.[0] ?? 503); code = error.code;
     }
     if (status >= 500 && code === 'INTERNAL_ERROR') this.telemetry.captureInternal();
+    if (status === 401) http.getResponse<Response>().setHeader('www-authenticate', 'Bearer');
     problem(http.getRequest(), http.getResponse(), status, code);
   }
 }

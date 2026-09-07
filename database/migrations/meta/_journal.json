@@ -1,5 +1,6 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": [{ "idx": 0, "version": "7", "when": 1788739200000, "tag": "0000_foundation", "breakpoints": true }]
+  "entries": [{ "idx": 0, "version": "7", "when": 1788739200000, "tag": "0000_foundation", "breakpoints": true },
+    { "idx": 1, "version": "7", "when": 1788739200100, "tag": "0001_identity", "breakpoints": true }]
 }

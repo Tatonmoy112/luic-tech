@@ -8,7 +8,7 @@ import type { RuntimeConfig } from './configuration';
 export interface RequestContext { readonly correlationId: string; readonly span: Span }
 export const requestContext = new AsyncLocalStorage<RequestContext>();
 export type SafeEvent = 'http_completed' | 'db_transaction' | 'db_unavailable' | 'worker_completed' | 'worker_abandoned' | 'error_captured';
-export type SafeCode = 'OK' | 'BAD_REQUEST' | 'NOT_FOUND' | 'PAYLOAD_TOO_LARGE' | 'UNAVAILABLE' | 'CONFLICT' | 'INTERNAL_ERROR' | 'DB_BUSY' | 'COMMIT_UNKNOWN' | 'ROLLED_BACK' | 'DRAINING';
+export type SafeCode = 'OK' | 'BAD_REQUEST' | 'NOT_FOUND' | 'PAYLOAD_TOO_LARGE' | 'UNAVAILABLE' | 'CONFLICT' | 'INTERNAL_ERROR' | 'DB_BUSY' | 'COMMIT_UNKNOWN' | 'ROLLED_BACK' | 'DRAINING' | 'UNAUTHORIZED' | 'FORBIDDEN' | 'PRECONDITION_FAILED' | 'PRECONDITION_REQUIRED';
 export type SafeRoute = '/health/live' | '/health/ready' | 'unmatched' | 'worker';
 export type LogSink = (record: Readonly<Record<string, unknown>>) => void;
 

@@ -1,7 +1,7 @@
 # AI-DLC entry point
 
 **Adopted process:** AI-DLC for this repository, by user instruction on 6 September 2026.  
-**Current work:** B002 HTTP/PostgreSQL/telemetry implemented and verified, In review; B001/B002 human acceptance pending.  
+**Current work:** U02/B003 BUILD-007/008 identity and ownership implemented/verified, In review; B001/B002/B003 human acceptance pending.
 **Execution scope:** Backend, database, workers and operations. Frontend work is excluded from the current intent.
 
 ## Method and local application
@@ -17,7 +17,7 @@ This is a documented local workflow, not an installation or unmodified copy of a
 | 1 | [Current workflow state](state.md) | Active intent, authorization, selected profile, actual progress and next action |
 | 2 | [Workflow and human decisions](workflow.md) | Phase activities, readiness, review, evidence and change control |
 | 3 | [Unit and Bolt execution map](execution-map.md) | Map all 44 BUILD tasks and 16 ADAPT additions without changing dependencies |
-| 4 | [First Unit/Bolt plan](units/U01-foundation.md) | Concrete first development slice, inputs, tests and boundaries |
+| 4 | [Active U02 identity Unit](units/U02-identity.md) | Current scope, B003 evidence and exclusions; U01 foundation remains historical context |
 | 5 | [Session guide](session-guide.md) | Start/resume/finish consistently with minimal relevant context |
 | 6 | [Evidence and decision log](audit.md) | Provenance, current authorization and review events; no invented acceptance |
 
@@ -41,3 +41,5 @@ Keep authoritative facts in their owning file and link them. AI-DLC artifacts ad
 ## Current applicability
 
 The repository has substantial proposed Inception and design inputs, including the 78-table baseline and adaptable-commerce extension plans. [B001](bolts/B001-foundation.md) supplies local core evidence under AUTH-004; [B002](bolts/B002-foundation.md) extends it with HTTP, PostgreSQL and local telemetry under AUTH-005. This foundation does not implement domain commerce or optional models, or establish human/operational acceptance. Further work follows the scoped authorization and next-action record in state.
+
+[B003](bolts/B003-identity.md) subsequently supplies local identity/ownership and staff access evidence under AUTH-006. U02 remains In progress; real Auth0, guest/order access, policy administration, other Units and human acceptance remain pending.

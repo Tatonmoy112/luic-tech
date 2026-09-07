@@ -51,3 +51,8 @@ Merchant legal identity, actual goods, tax/invoice/retention obligations, provid
 ## B002 local evidence, 7 September 2026
 
 [AUTH-005 / B002](../aidlc/bolts/B002-foundation.md) retains this exact synthetic profile/revision with configuration version 2 and local PostgreSQL. No merchant fact, commerce capability, policy lifecycle or optional model was enabled. Identity/payment remain composition labels, with no issuer/simulator/provider implementation.
+
+
+## B003 local identity evidence
+
+DEV-PHYSICAL-BD revision 1 now has BUILD-007/008 synthetic signed customer/staff identities, verified MFA claims, owned profile/address operations and audited current staff grants/revocation. [B003](../aidlc/bolts/B003-identity.md) records real local PostgreSQL negative/race/failure and CLI/HTTP smoke evidence. Ten-address cap, BD fields, five-minute local tokens and fixed access/catalog roles are technical fixture refinements documented in the local identity contract; no merchant profile revision or real identity acceptance is inferred. All optional templates stay disabled. Human acceptance and BUILD-034 real Auth0 evidence remain pending.

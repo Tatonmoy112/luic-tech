@@ -5,7 +5,7 @@ const { createHash } = require('node:crypto');
 const { Pool } = require('pg');
 const { sql } = require('drizzle-orm');
 const { pgSchema, bigint, text } = require('drizzle-orm/pg-core');
-const { Database, Telemetry, readConfiguration, FOUNDATION_HASH } = require('../packages/platform/dist');
+const { Database, Telemetry, readConfiguration, FOUNDATION_HASH, IDENTITY_HASH } = require('../packages/platform/dist');
 const { applyMigrations } = require('../packages/platform/dist/migrations');
 const { environment, databaseSettings } = require('./helpers.cjs');
 const folder = path.join(__dirname, '../database/migrations');
@@ -33,9 +33,9 @@ afterAll(async () => {
 });
 test('reviewed migration identity, replay and concurrent runners agree', async () => {
   expect(createHash('sha256').update(fs.readFileSync(path.join(folder, '0000_foundation.sql'))).digest('hex')).toBe(FOUNDATION_HASH);
-  expect(await Promise.all([applyMigrations(connection, folder), applyMigrations(connection, folder)])).toEqual([1, 1]);
+  expect(await Promise.all([applyMigrations(connection, folder), applyMigrations(connection, folder)])).toEqual([2, 2]);
   const rows = (await admin.query('SELECT hash FROM drizzle.__drizzle_migrations')).rows;
-  expect(rows).toEqual([{ hash: FOUNDATION_HASH }]);
+  expect(rows).toEqual([{ hash: FOUNDATION_HASH }, { hash: IDENTITY_HASH }]);
   expect(await database.ready()).toBe(true);
 });
 test('migration drift is rejected and failed additive migration rolls back without history', async () => {
@@ -45,18 +45,18 @@ test('migration drift is rejected and failed additive migration rolls back witho
   await expect(applyMigrations(connection, temp)).rejects.toThrow('Migration history mismatch');
   fs.copyFileSync(path.join(folder, '0000_foundation.sql'), path.join(temp, '0000_foundation.sql'));
   const journal = JSON.parse(fs.readFileSync(path.join(temp, 'meta/_journal.json')));
-  journal.entries.push({ idx: 1, version: '7', when: 1788739200001, tag: '0001_failure', breakpoints: true });
+  journal.entries.push({ idx: 2, version: '7', when: 1788739200200, tag: '0001_failure', breakpoints: true });
   fs.writeFileSync(path.join(temp, 'meta/_journal.json'), JSON.stringify(journal));
   fs.writeFileSync(path.join(temp, '0001_failure.sql'), 'CREATE SCHEMA b002_failed;\n--> statement-breakpoint\nSELECT 1/0;');
   await expect(applyMigrations(connection, temp)).rejects.toThrow();
   expect((await admin.query("SELECT to_regnamespace('b002_failed') AS name")).rows[0].name).toBeNull();
-  expect((await admin.query('SELECT count(*) FROM drizzle.__drizzle_migrations')).rows[0].count).toBe('1');
+  expect((await admin.query('SELECT count(*) FROM drizzle.__drizzle_migrations')).rows[0].count).toBe('2');
   // Repair only the never-applied test migration, then prove the lock was released.
   fs.writeFileSync(path.join(temp, '0001_failure.sql'), 'CREATE SCHEMA b002_failed;');
-  expect(await applyMigrations(connection, temp)).toBe(2);
+  expect(await applyMigrations(connection, temp)).toBe(3);
   expect(await database.ready()).toBe(false); // future history requires compatible code
   await admin.query('DROP SCHEMA b002_failed');
-  await admin.query('DELETE FROM drizzle.__drizzle_migrations WHERE created_at = 1788739200001');
+  await admin.query('DELETE FROM drizzle.__drizzle_migrations WHERE created_at = 1788739200200');
 });
 test('two repository operations commit once on one session, with exact bigint via pg and Drizzle', async () => {
   let saved;

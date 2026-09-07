@@ -5,37 +5,37 @@
 | Field | Current value |
 | --- | --- |
 | Intent | INT-001: Prepare and build the scoped ecommerce backend using AI-DLC |
-| Active request | Implement and verify U01/B002, BUILD-004 through BUILD-006, with synthetic local data and local PostgreSQL; update handoff |
-| Current action scope | AUTH-005: B002 source/configuration/migrations/tests/local runtime and routine fixes; excludes frontend, real providers, cloud deployment and later Units |
-| AI-DLC activity | Construction: B002 implemented and verified, In review; B001 also In review; U01 In progress pending human acceptance |
+| Active request | Implement and verify U02 BUILD-007/008 with synthetic local data and local PostgreSQL; update workflow/handoff |
+| Current action scope | AUTH-006: B003 identity/access source, migration, local fixtures, tests and routine fixes; excludes frontend, real providers including Auth0, cloud and later tasks |
+| AI-DLC activity | Construction: B003 implemented/verified, In review; U02 In progress |
 | Product scope | Backend/database/workers/operations; frontend excluded |
-| Commerce profile | DEV-PHYSICAL-BD revision 1, synthetic-only; optional model templates disabled |
-| Architecture baseline | Modular backend and eight ownership schemas; 78 proposed domain tables remain unimplemented |
-| Implementation status | BUILD-001 through BUILD-006 bounded evidence ready; no full task/requirement human-accepted; later BUILD and all ADAPT behavior pending |
-| Active Unit / Bolt | U01 Foundations / B002 HTTP, PostgreSQL and telemetry |
-| Bolt verification | Windows: 124 passed / 6 POSIX skips; clean Linux and fresh PostgreSQL: all 130 passed; 5 suites |
-| Authorization record | AUTH-005 in audit; AUTH-004 still covers B001 fixes; explicit B002 direction permits technical progression without inventing B001 acceptance |
+| Commerce profile | DEV-PHYSICAL-BD revision 1, synthetic only; optional templates disabled |
+| Architecture baseline | Modular backend, eight ownership schemas; seven IAM tables and bounded staff audit implemented out of the 78-table proposed model |
+| Implementation status | BUILD-001 through BUILD-008 bounded evidence ready; no task or full requirement human-accepted; later BUILD and all ADAPT behavior pending |
+| Active Unit / Bolt | U02 Identity and access / B003 local identity and ownership |
+| Bolt verification | Windows: 161 passed / 6 POSIX skips; clean Linux and fresh PostgreSQL: all 167 passed; 6 suites |
+| Authorization record | AUTH-006 in audit; AUTH-004/005 retain foundation fix scope; current instruction permits U02 progression without inventing B001/B002 acceptance |
 | Human review | Codex implementation and AI self-review complete; applicable human acceptance/reviewer assignment pending |
-| Artifact identity | B002-manifest.json: 46 inputs; artifact set 369d84170d6a328a6d9d6e20cfece17c29b0bde436d2ae2e902a396630900138 |
-| Schema / configuration | 0000_foundation, SHA-256 699076c71a6da2cc4a7f2c88bbab2f5976fde815ac60fe978c236f8dc1f3a201; config version 2 |
-| Runtime evidence | Node 24.19.0/npm 11.17.0; Windows X64 and Linux x64/glibc 2.36; PostgreSQL 18.4 Debian; Docker 29.7.2 |
-| Local environment | Developer PostgreSQL container luic-b002-1fbad6effef6 at 127.0.0.1:61875; ignored .local role environments/credentials; local/test migrated; verification containers removed |
-| Local start gate | B001/B002 technical foundation proved; domain identity/catalog/commerce and later client evidence remain |
-| Real integration/production gates | I/P and D01-D16 real evidence remain pending per capability |
-| Tooling | Markdown workflow and local scripts/tests; no AI-DLC plugin/harness or CI enforcement installed |
+| Artifact identity | B003-manifest.json: 55 inputs; artifact set ff3a8462b1864e9dfc30bc665ecf1bb0ca21d60f278f8674cbc8a4a6be6194e5 |
+| Schema / configuration | Two immutable migrations through 0001_identity, SHA-256 9d7a5f5db79ab27e7d12034882a6e921baa01070d8a66a30319a691dff45177c; config version 2, identity composition revision 1 |
+| Runtime evidence | Node 24.19.0/npm 11.17.0; Windows x64 and Linux x64/glibc 2.36; PostgreSQL 18.4 Debian; JWT 9.0.3/types 9.0.10 |
+| Local environment | Existing luic-b002-1fbad6effef6 PostgreSQL at 127.0.0.1:61875 preserved; both databases migrated; local synthetic administrator/customer smoke passed; keys/tokens/credentials in ignored .local; verification containers removed |
+| Local start gate | Foundation and local identity/ownership proved; catalog/commerce/later integrations remain |
+| Real integration/production gates | BUILD-034 real Auth0/JWKS/MFA and I/P/D01-D16 evidence remain pending per capability |
+| Tooling | Markdown AI-DLC and local scripts/tests; no workflow plugin/harness, subagents or CI enforcement installed |
 
 ## Resume next
 
-Read [B002 evidence](bolts/B002-foundation.md), [U01](units/U01-foundation.md), [run guide](../../README.md) and the actual diff. Preserve the historical [B001 evidence](bolts/B001-foundation.md) and its manifest; current source identity belongs to [B002 manifest](evidence/B002-manifest.json). Do not repeat completed bootstrap or recreate existing local databases.
+Read [B003 evidence](bolts/B003-identity.md), [U02](units/U02-identity.md), [identity contracts](../../backend/readiness/09-local-identity-contracts.md), [run guide](../../README.md) and actual diff. Preserve historical B001/B002 manifests; current artifact identity is [B003](evidence/B003-manifest.json). Do not repeat database/key setup destructively or rerun the one-time administrator bootstrap. Mint a fresh five-minute local token when needed.
 
-Next action is human review of the concrete foundation artifacts and their limitations. AUTH-005 carries forward for B002 fixes and verification without another permission ceremony. Next planned implementation is U02/BUILD-007/008 with its own bounded instruction. No later Unit or domain migration is authorized by this handoff.
+Human review of the concrete B003 artifacts is pending. AUTH-006 authorizes routine U02 BUILD-007/008 fixes/verification without another permission ceremony. Next planned local implementation is U03 starting BUILD-009 with its own bounded instruction. BUILD-034, ADAPT-008, guest/order access and all later tasks remain outside this authorization. U01/B001/B002 human acceptance is unchanged.
 
 ## Known limits and pending decisions
 
-Source remains strict TypeScript, with skipLibCheck enabled due to errors in Drizzle's published declarations. A scoped esbuild override fixes Kit's advisory chain; deprecated loaders and glob remain. Audit reported zero known vulnerabilities, not full security acceptance. Schema drift checks cover history/ownership-schema presence, not future domain-table drift.
+Local RS256/MFA claims are synthetic evidence only. Missing verification key denies protected access; absent/malformed/currently ungranted identities cannot become allow. Every access operation reloads PostgreSQL grants under the local access lock; no distributed authorization cache or performance acceptance is claimed. Staff-only early audit must be extended/reconciled for generic actor/target metadata in BUILD-012 while preserving evidence. No generic idempotency/outbox, guest order access, role-definition API, real issuer rotation, optional policy administration or production security is implemented. Order/address snapshot evidence awaits orders.
 
-No domain tables/endpoints, identity issuer, payment simulator, queue adapter, real provider, complete operational telemetry service, load, recovery or deployment is implemented or accepted. Local Sentry transport and manual OTel spans do not require external accounts. Money/stock/authorization/idempotency invariants remain obligations for their owning Units. Human acceptance, full D09/BA-040 client compatibility and real merchant/provider/production decisions remain pending.
+Source remains strict TypeScript with skipLibCheck for Drizzle declarations and the documented scoped esbuild override. Final clean audit reported zero known vulnerabilities; legacy deprecations remain. Migration checks cover history and ownership-schema presence rather than arbitrary table/index drift. B002-only readiness rejects the new migration history; rollbacks require compatible application code, not deletion of identity/audit facts.
 
 ## State maintenance
 
-Keep [audit](audit.md), Unit/Bolt evidence, BUILD/DBT references, traceability and status board consistent with actual results. Passing checks do not imply acceptance; planned capability is not implemented capability.
+Keep audit, Unit/Bolt evidence, BUILD/DBT references, traceability and status board consistent with observed results. Passing checks do not imply acceptance; later planned capability is not implemented capability.

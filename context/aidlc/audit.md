@@ -1,10 +1,12 @@
 # AI-DLC evidence and decision log
 
+Current U02 handoff is recorded in AUTH-006 and AUD-011/012 below; prior events remain historical.
+
 **Record rule:** Append dated events. Correct mistakes with a new linked entry; do not rewrite prior approvals. This is a documentation audit, not an installed automatic transcript or tamper-proof compliance system. Redact secrets and sensitive data.
 
 ## Current authorization pointer
 
-AUTH-005 (7 September 2026): user explicitly requested U01/B002, BUILD-004 through BUILD-006, using synthetic local data and local PostgreSQL, excluding frontend, real providers and cloud deployment, with verification and workflow/handoff updates. This supersedes the previous B002 action gate; B001 human acceptance remains pending. Codex is executor and AI self-reviewer. See the [B002 plan](bolts/B002-foundation.md). Routine local runtime bootstrap, migrations, tests and fixes within B002 are authorized; no later Unit or human acceptance is inferred.
+AUTH-006 (7 September 2026): explicit user request to implement U02 BUILD-007/008 using synthetic local data and local PostgreSQL, excluding frontend, real providers (including Auth0) and cloud deployment; verify and update workflow/handoff. Codex is executor and AI self-reviewer. [B003](bolts/B003-identity.md) records the bounded plan, implementation and evidence. Routine fixes/verification carry forward. AUTH-004/005 retain foundation fix scope; human acceptance and later tasks remain separate.
 
 ## Authorization and initial events
 
@@ -94,3 +96,18 @@ The [B002 manifest](evidence/B002-manifest.json) identifies 46 inputs, lock SHA-
 Document checks passed for 96 Markdown files and 349 local links, table widths and trailing whitespace, including untracked files. The execution map retains 12 Units, all 44 BUILD IDs and all 16 ADAPT IDs exactly once. git diff --check passed with only the pre-existing extensionless discovery document's line-ending warning. Ignore checks exclude local credentials/configuration, generated dist and node_modules while retaining synthetic examples; generated role-password scanning found no value in nonignored artifacts. Docker inspection confirmed no verification container remained and the developer PostgreSQL container was exposed only on loopback.
 
 State, Unit/Bolt, BUILD/DBT references, traceability, profile evidence, status board and entrypoint guides agree: B001/B002 In review, U01 In progress, human acceptance pending; no domain table or real-provider/production capability is accepted. Current authorization remains AUTH-005 for B002 fixes and AUTH-004 for B001 fixes. Human review is next; later Unit implementation requires its own scoped instruction. No further runtime tests were needed after the documentation handoff.
+
+
+### AUTH-006: bounded U02 implementation authorization
+
+7 September 2026, explicit user request: read AGENTS.md, state, execution map and B002; follow AI-DLC and implement U02 BUILD-007 through BUILD-008 using synthetic local data and local PostgreSQL; exclude frontend, real providers (including Auth0) and cloud; verify and update workflow/handoff. This authorizes B003 source, migration, fixtures, local runtime, verification and routine repairs. It does not accept B001/B002, authorize BUILD-034/ADAPT-008 or extend into later Units. Codex is implementation executor and AI self-reviewer; no subagents or human reviewer participation was invented.
+
+### AUD-011: B003 implementation and observed verification
+
+7 September 2026, INT-001/U02/B003 under AUTH-006. Starting HEAD 4986b1b62e0d79b1baa2bb1f7cb673d383e52c8a, clean working tree. The Unit/Bolt plan preceded source implementation. Added seven IAM tables and protected staff-only audit, signed local JWT verification, owned profile/address operations and current audited staff grants/revocation. [B003](bolts/B003-identity.md) records expected versus observed access, migration, negative/race/failure and local operator scenarios. Windows check: 161 passed, six POSIX skips, 167 total; fresh Linux/PostgreSQL: 167 passed, no skips, six suites. Clean locked install, dependency graph, build, migration generation/replay and audit passed (zero known vulnerabilities). The two malformed-token test fixtures were repaired without weakening verifier checks.
+
+Local/test databases upgraded without recreation; local synthetic administrator/bootstrap audit and a customer smoke record now persist. Credentials, signing material and tokens remain ignored under .local; no token/key was printed. Disposable verification containers were removed. No real-provider call, cloud/frontend work, commit or deployment occurred. Early staff audit is a documented bounded dictionary subset; BUILD-012 must extend/reconcile generic actor/target fields while preserving evidence.
+
+### AUD-012: B003 evidence identity and handoff
+
+7 September 2026, Codex AI self-review. [B003 manifest](evidence/B003-manifest.json) identifies 55 source/configuration/dependency/migration/script/test inputs, artifact set SHA-256 ff3a8462b1864e9dfc30bc665ecf1bb0ca21d60f278f8674cbc8a4a6be6194e5; lock b92a712f8ab017ae8254bea2932d96c718861d1496231021a9619bea10bf51d6; schema 0001_identity SHA-256 9d7a5f5db79ab27e7d12034882a6e921baa01070d8a66a30319a691dff45177c. B001/B002 manifests and immutable 0000_foundation are preserved. Runtime config remains version 2, identity composition revision 1, profile DEV-PHYSICAL-BD revision 1. Human acceptance/reviewer assignment remains pending; B003/BUILD-007/008 In review, U02 In progress. State, Unit/Bolt, task/DBT references, traceability, profile, contracts and status board updated. AUTH-006 persists for routine fixes; next planned local Unit is U03 starting BUILD-009, requiring its own bounded instruction.

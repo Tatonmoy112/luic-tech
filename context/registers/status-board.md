@@ -3,7 +3,7 @@
 **Updated:** 7 September 2026  
 **Overall state:** Local backend Construction; broader product governance remains pre-kickoff  
 **Current gate:** Gate A — Ready kickoff  
-**Implementation evidence:** B001/B002 bounded foundation verified, In review; no human-accepted task
+**Implementation evidence:** B001/B002 foundation and B003 local identity verified, In review; no human-accepted task
 
 ## Phase status
 
@@ -12,7 +12,7 @@
 | 0. Governance/readiness | Not started | Planning baseline only | Name owners and resolve G1 decisions |
 | 1. Experience/contract design | Not started | Proposed product/system/database/backend blueprints | Approved scope and available reviewers |
 | 2. Platform foundations | In progress for local U01 | BUILD-001 through BUILD-006 verified; B001/B002 In review | Human foundation acceptance; G2 remains for shared/production platform |
-| 3. Identity/catalog/media | Not started | Requirements only | Gate B and approved designs |
+| 3. Identity/catalog/media | In progress for local U02 | BUILD-007/008 B003 verified; catalog/media pending | Human identity acceptance; U03 requires its own bounded instruction; real identity remains BUILD-034 |
 | 4. Storefront/search/cart | Not started | Requirements only | Published catalog and platform path |
 | 5. Pricing/checkout/inventory | Not started | Proposed rules only | Finance/stock/shipping policies |
 | 6. Payment/reconciliation | Not started | Proposed provider controls only | Merchant sandbox/readiness and commerce core |
@@ -23,7 +23,7 @@
 
 ## Immediate next eligible work
 
-AI-DLC is the selected execution process. [Current workflow state](../aidlc/state.md) records INT-001, DEV-PHYSICAL-BD revision 1 and AUTH-005 B002 implementation scope. [B001](../aidlc/bolts/B001-foundation.md) has verified BUILD-001/002/003 evidence ready for human review. [B002](../aidlc/bolts/B002-foundation.md) now supplies verified BUILD-004/005/006 evidence. Human foundation review is next; U02/BUILD-007/008 is the next planned scope with its own instruction. The phase table retains full-product governance gates; those do not delay independent local backend work.
+AI-DLC is the selected execution process. [Current workflow state](../aidlc/state.md) records INT-001, DEV-PHYSICAL-BD revision 1 and AUTH-006 U02 BUILD-007/008 implementation scope. [B001](../aidlc/bolts/B001-foundation.md) has verified BUILD-001/002/003 evidence ready for human review. [B002](../aidlc/bolts/B002-foundation.md) now supplies verified BUILD-004/005/006 evidence. [B003](../aidlc/bolts/B003-identity.md) now supplies verified BUILD-007/008 identity/ownership evidence. Human review remains pending; next planned local scope is U03 starting BUILD-009 with its own instruction. The phase table retains full-product governance gates; those do not delay independent local backend work.
 
 Backend local work has a separate path in the [readiness pack](../../backend/readiness/README.md). B001 was executed and self-reviewed by Codex; human acceptance remains pending. Production accounts and merchant policies do not block unrelated local slices. Real integrations and production retain their capability-specific evidence gates.
 
@@ -39,7 +39,7 @@ Backend local work has a separate path in the [readiness pack](../../backend/rea
 
 ## Active work
 
-INT-001 / U01 remains In progress; B001 and B002 are In review. B002 verifies HTTP/context, local PostgreSQL/Drizzle transactions/migrations and local telemetry/drain under AUTH-005. Final Windows checks passed 124 tests with six POSIX skips; fresh Linux/PostgreSQL passed all 130, with clean dependency graph/build/generation and zero known audit vulnerabilities. [B002 evidence](../aidlc/bolts/B002-foundation.md), its manifest and AUD-009/010 record exact identities, failures/repairs and preservation. The developer database remains available on loopback; no domain table or real provider exists.
+INT-001 / U01 and U02 remain In progress; B001/B002/B003 are In review. B003 implements signed local identity, protected one-time administrator bootstrap, customer profile/address ownership and audited current staff grants/revocation under AUTH-006. Windows passed 161 tests with six POSIX skips; fresh Linux/PostgreSQL passed all 167, plus clean dependency graph/build/generation and zero known audit vulnerabilities. [B003 evidence](../aidlc/bolts/B003-identity.md), its 55-input manifest and AUD-011/012 record exact identities, failures/repairs and preservation. Existing loopback PostgreSQL now has seven IAM tables and early staff audit. Local staff/customer HTTP smoke and bootstrap replay denial passed. No real provider exists.
 
 ## Blocked work
 
@@ -49,7 +49,7 @@ No task has been assigned or formally moved to `Blocked`. The project as a whole
 
 AI-DLC documentation supplies lifecycle rules, state, audit, 12 Units covering 44 BUILD tasks, ADAPT mappings and delivery templates. B001 implementation evidence is now available separately; detailed human artifact acceptance remains pending.
 
-Additional documentation specifies [commerce profiles](commerce-profiles.md), [configurable backend policies](../../backend/14-configurable-commerce.md), [database extension boundaries](../../database/11-commerce-extension-plan.md) and [16 ADAPT tasks](../../backend/readiness/08-adaptive-development-plan.md). The selected profile is synthetic; other commerce models remain disabled. Beyond BUILD-001 through BUILD-006, implementation remains pending; all ADAPT behavior and external evidence remain pending.
+Additional documentation specifies [commerce profiles](commerce-profiles.md), [configurable backend policies](../../backend/14-configurable-commerce.md), [database extension boundaries](../../database/11-commerce-extension-plan.md) and [16 ADAPT tasks](../../backend/readiness/08-adaptive-development-plan.md). The selected profile is synthetic; other commerce models remain disabled. Beyond BUILD-001 through BUILD-008, implementation remains pending; all ADAPT behavior and external evidence remain pending.
 
 The dev, context, database and backend packs exist, including concrete backend readiness defaults, contract corrections and 44 implementation tasks. The consolidated backend guide, eight-page backend diagram and six-page 78-table ERD incorporate the readiness corrections and full table ownership. They are documentation artifacts; no software, integration or deployment has been accepted.
 

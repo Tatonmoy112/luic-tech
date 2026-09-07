@@ -112,3 +112,8 @@ Use a private API client and automated harness to create fictional staff/custome
 ## B002 compatibility refinement, 7 September 2026
 
 AUTH-005 retains the B001 Node/Nest/Express/CommonJS baseline and adds pg 8.23.0, Drizzle ORM 0.45.2 / Kit 0.31.10, PostgreSQL 18.4, OTel API 1.9.1 / trace SDK 2.11.0, Sentry Node 10.73.0 and pg types 8.23.1. See [B002](../../context/aidlc/bolts/B002-foundation.md) for exact identities and observed checks. Published Drizzle declarations failed library checks; application source remains strict with skipLibCheck enabled. A scoped esbuild 0.25.12 override repairs the legacy Kit loader advisory chain; generation/replay is verified. Sentry uses only a local transport and OTel manual spans; no account or remote exporter is used. Human acceptance and full D09/BA-040 compatibility remain pending.
+
+
+## B003 compatibility and identity refinement, 7 September 2026
+
+AUTH-006 retains the B002 toolchain and adds jsonwebtoken 9.0.3/@types/jsonwebtoken 9.0.10 for offline RS256 verification. [B003](../../context/aidlc/bolts/B003-identity.md) and its manifest contain exact dependency integrity and Windows/Linux evidence; all 167 Linux tests passed and final audit found zero known vulnerabilities. [Local identity contracts](09-local-identity-contracts.md) specify required claims, five-minute tokens, synthetic MFA, ten-address bounds, optimistic versions and fixed roles. Sensitive and ordinary access operations both reload PostgreSQL grants under the access lock, satisfying the existing freshness bound with no cache. Real JWKS rotation/MFA/provider behavior remains BUILD-034. Runtime config version 2 is retained; optional public-key composition is revision 1.

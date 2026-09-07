@@ -1,6 +1,6 @@
 # Development data dictionary
 
-This proposed 78-table logical model incorporates the [backend readiness supplement](10-backend-readiness-supplement.md), including cancellation requests, per-destination delivery, durable jobs, response replay and worker claims. The editable ERD represents the same model. No schema or migration has been implemented.
+This 78-table logical model incorporates the [backend readiness supplement](10-backend-readiness-supplement.md), including cancellation requests, per-destination delivery, durable jobs, response replay and worker claims. The editable ERD represents the proposed full model. B003 implements seven non-order IAM tables and bounded staff audit; the implemented-subset note below records its limits. Other domain schemas remain planned.
 
 ## How to read this dictionary
 
@@ -150,3 +150,8 @@ Several successful payment attempts may exist for an order. The schema deliberat
 8. Return requested/approved/received/inspected quantities do not exceed the original order-line quantity after prior cases.
 9. Settlement entry gross less fee equals net according to provider sign conventions approved during D05; every match remains traceable to its source import.
 10. Outbox event aggregate version corresponds to the committed aggregate update; consumer receipt and local effect commit together.
+
+
+## B003 implemented subset
+
+The logical model above remains the design authority. [B003](../context/aidlc/bolts/B003-identity.md) implements the seven non-order IAM tables and an early staff-only platform.audit_events subset; the other 70 table definitions remain proposed. Mutable versions are bigint and local UUID generation uses UUIDv4 pending UUIDv7 approval. Exact lengths/constraints and runtime privileges are in 0001_identity.sql. Early audit stores nonnull actor_staff_id, action, target_id (staff), reason, summary, correlation_id and created_at. BUILD-012 must preserve and extend/reconcile this representation for the generic dictionary actor/target/change-summary fields. No guest_order_access or generic audit/outbox behavior is implied by this bounded implementation.

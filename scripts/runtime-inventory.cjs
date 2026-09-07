@@ -34,8 +34,8 @@ const files = ['.gitignore', '.gitattributes', '.npmrc', '.node-version', '.env.
   ...['apps', 'packages', 'scripts', 'tests', 'database/migrations'].flatMap(walk)].sort();
 const artifacts = files.map(file => ({ file, sha256: sha256(read(file)) }));
 const inventory = {
-  bolt: 'B002', profile: 'DEV-PHYSICAL-BD', profileRevision: 1, configVersion: 2,
-  schema: { revision: '0000_foundation', sha256: sha256(read('database/migrations/0000_foundation.sql')) },
+  bolt: 'B003', profile: 'DEV-PHYSICAL-BD', profileRevision: 1, configVersion: 2,
+  schema: { revision: '0001_identity', sha256: sha256(read('database/migrations/0001_identity.sql')) },
   observedHost: { node: process.version, platform: process.platform, arch: process.arch,
     osRelease: os.release(), nodeExecutableSha256: sha256(fs.readFileSync(process.execPath)) },
   packageManager: rootPackage.packageManager,
@@ -48,7 +48,7 @@ const output = JSON.stringify(inventory, null, 2) + '\n';
 if (process.argv.includes('--write')) {
   const directory = path.join(root, 'context/aidlc/evidence');
   fs.mkdirSync(directory, { recursive: true });
-  fs.writeFileSync(path.join(directory, 'B002-manifest.json'), output);
+  fs.writeFileSync(path.join(directory, 'B003-manifest.json'), output);
   console.log(JSON.stringify({ lockSha256: inventory.lockSha256,
     artifactSetSha256: inventory.artifactSetSha256, artifacts: artifacts.length }));
 } else process.stdout.write(output);

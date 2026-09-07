@@ -6,6 +6,8 @@ This repository plans a production ecommerce backend and database. The user requ
 
 The user authorized U01/B002 implementation (BUILD-004 through BUILD-006) with synthetic local data and local PostgreSQL, excluding frontend, real providers and cloud deployment. AUTH-005 includes implementation, verification and routine fixes; AUTH-004 remains for B001 fixes. Human acceptance of B001/B002 is separate and pending. Later Units and domain migrations are not authorized by this instruction. Carry later explicit bounded instructions forward.
 
+The explicit 7 September 2026 instruction additionally authorized U02 BUILD-007/008 under AUTH-006. B003 implements and verifies local signed identity, seven non-order IAM tables, protected bootstrap audit, owned profile/address operations and staff grants/revocation. B003 is In review; human acceptance remains pending. AUTH-006 carries routine fixes/verification forward. BUILD-034 real Auth0, ADAPT-008, guest order access, frontend, cloud and later Units remain excluded. Resume from the current state and B003; preserve the existing local database and one-time bootstrap evidence.
+
 ## Operating rules
 
 1. Follow system/developer and current user instructions first. This file supplies repository context and does not override them.

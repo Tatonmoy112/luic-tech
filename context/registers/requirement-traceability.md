@@ -1,6 +1,6 @@
 # Requirement traceability matrix
 
-**Current coverage:** B001/B002 supply partial OPS-01/SEC-01 foundation evidence; remaining evidence is planned. No row is accepted.
+**Current coverage:** B001/B002 supply partial foundation evidence; B003 adds local identity/ownership/access evidence to ACC-01/ACC-02/ADM-01/SEC-01 and NFR-08 ownership. No full row is accepted.
 
 The [AI-DLC execution map](../aidlc/execution-map.md) assigns every BUILD outcome and ADAPT addition to a primary Unit. Each Bolt links the exact requirement IDs below to its task/substeps, canonical design and actual evidence. The matrix remains the product acceptance index; Unit membership alone is not requirement coverage or acceptance. Future scoped extensions must receive their own valid requirement IDs before acceptance.
 
@@ -9,8 +9,8 @@ The [AI-DLC execution map](../aidlc/execution-map.md) assigns every BUILD outcom
 | CAT-01 | DES-006, CAT-001–CAT-011, WEB-002–WEB-005 | Catalog lifecycle and product-to-cart scenarios | Planned |
 | MED-01 | MED-001–MED-006, WEB-004, MIG-006 | Upload/quarantine/public-private access/media mapping | Planned |
 | SRCH-01 | SYS-013, SEA-001–SEA-009 | Query/facet/freshness/delete/outage/reindex suite | Planned |
-| ACC-01 | GOV-006, IAM-001–IAM-012, QLT-003 | Token/MFA/role/revocation matrix | Planned |
-| ACC-02 | DES-003/005, IAM-004–IAM-009, ORD-001 | Guest/customer ownership and address snapshot suite | Planned |
+| ACC-01 | GOV-006, IAM-001–IAM-012, QLT-003; BUILD-007/008 | B003 synthetic token/MFA-claim/current-grant/revocation matrix; real Auth0/JWKS/MFA remains BUILD-034 | In progress |
+| ACC-02 | DES-003/005, IAM-004–IAM-009, ORD-001; BUILD-007/008 | B003 unique customer mapping and owned profile/address race/denial evidence; guest/order snapshots pending | In progress |
 | CART-01 | CART-001–CART-010 | Persistence/merge/stale/cache-loss suite | Planned |
 | CHK-01 | SYS-008/010, PRC-001–PRC-007, CHK-001–CHK-012, QLT-004 | Authoritative total, tamper, idempotency and rollback suite | Planned |
 | INV-01 | SYS-009, INV-001–INV-013, CHK, PAY, RET stock tasks | Ledger roll-forward, contention, expiry/allocation/restock suite | Planned |
@@ -19,7 +19,7 @@ The [AI-DLC execution map](../aidlc/execution-map.md) assigns every BUILD outcom
 | ORD-01 | SYS-007, CHK-007/008, ORD-001–ORD-007, FUL | Snapshot/state/history and invalid-transition suite | Planned |
 | SHIP-01 | GOV-007, PRC-002, FUL-001–FUL-010 | Zone, eligibility, pick-pack-track-deliver/exception suite | Planned |
 | RET-01 | GOV-008, RET-001–RET-019, QLT-006 | Cancellation/return/inspection/concurrent-refund suite | Planned |
-| ADM-01 | DES-006–DES-010, IAM-007/010/011, ADM-001–ADM-004 | Role/action/conflict/audit/export suite | Planned |
+| ADM-01 | DES-006–DES-010, IAM-007/010/011, ADM-001–ADM-004; BUILD-007/008 | B003 staff grant/revocation/version/audit evidence; broader admin/export/UI remain pending | In progress |
 | MKT-01 | PRC-004/005, MKT-001–MKT-007 | Coupon eligibility/cap/expiry and campaign suite | Planned |
 | SEO-01 | DES/WEB/SEO tasks, QLT-011/012 | Metadata/sitemap/canonical/structured/accessibility review | Planned |
 | NTF-01 | NTF-001–NTF-009, ASY tasks | Lifecycle delivery, provider outage and DLQ/replay suite | Planned |
@@ -35,7 +35,7 @@ The [AI-DLC execution map](../aidlc/execution-map.md) assigns every BUILD outcom
 | NFR-05 | SYS-018, FND-020, QLT-015, LCH-012 | Timed clean restore and reconciliation evidence | Planned |
 | NFR-06 | DES-012, WEB-008, QLT-012 | Automated/manual critical-journey accessibility evidence | Planned |
 | NFR-07 | SYS-014, FND-018, QLT-013/014 | Findings/remediation and launch severity review | Planned |
-| NFR-08 | Domain integrity tasks, QLT-004–QLT-007/018 | Concurrency/replay/ownership/reconciliation evidence | Planned |
+| NFR-08 | Domain integrity tasks, QLT-004–QLT-007/018; BUILD-007/008 | B003 ownership, exact version, cap/default and revocation races; money/stock/reconciliation pending | In progress |
 | NFR-09 | SYS-012/013, CART-008, SEA-009, QLT-008/009/017 | Cache/search/dependency-loss correctness evidence | Planned |
 
 ## Evidence status values
@@ -47,3 +47,8 @@ Use `Planned`, `In progress`, `Evidence ready`, `Accepted`, `Accepted with excep
 ## B002 evidence extension
 
 [AUTH-005 / B002](../aidlc/bolts/B002-foundation.md) extends OPS-01/SEC-01 with real local PostgreSQL commit/rollback/lock/precision and runtime privilege tests, bounded HTTP errors/health, correlated safe telemetry and shutdown. Both full requirements remain In progress; human acceptance is pending. These synthetic foundation tests do not close NFR-08 domain money/stock/ownership invariants or NFR-09 complete dependency-loss correctness. No full requirement or ADAPT capability is accepted.
+
+
+## B003 identity evidence extension
+
+[AUTH-006/B003](../aidlc/bolts/B003-identity.md) provides BUILD-007/008 evidence for ACC-01 (synthetic tokens/MFA claims and current staff permissions), ACC-02 (unique mapping and owned profile/addresses), ADM-01 (grants/revocation/version/audit), SEC-01 (negative tokens/ownership/current authority and protected audit) and the ownership portion of NFR-08 (mapping/address/version/revocation races). All remain In progress, with human acceptance pending. OPS-01 retains regression/clean runtime proof. Real Auth0/JWKS/MFA, guest/order snapshots, broader admin/export, money/stock and production controls remain pending. No frontend or optional-model evidence is implied.

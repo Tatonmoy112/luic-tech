@@ -129,3 +129,8 @@ The production baseline proposes encrypted automated backup, point-in-time recov
 ## B002 local implementation boundary
 
 [U01/B002 evidence](../context/aidlc/bolts/B002-foundation.md) covers synthetic local/test PostgreSQL 18.4, separate restricted runtime roles, eight ownership schemas, serialized hash-checked migration history and real transaction tests. Runtime applications never migrate. No domain tables, production roles/default grants, managed failover or restore acceptance is implied. The local fixture bootstrap creates environment logins/databases; the immutable migration owns schema and history grants. Review future generated SQL against these existing schemas before applying it.
+
+
+## U02/B003 migration evidence
+
+AUTH-006 adds reviewed immutable 0001_identity after 0000_foundation: seven IAM tables and protected early staff audit, restricted API DML, immutable runtime audit and no worker IAM grants. Existing local/test databases upgraded and fresh Linux/PostgreSQL rebuilt both revisions; [B003](../context/aidlc/bolts/B003-identity.md) records hashes, concurrency/failure/denial evidence and pending human acceptance. No guest/order/domain-commerce migration was applied. Runtime readiness now requires both hashes. Preserve data on rollback; B002-only readiness cannot accept the new history. Future generic audit work must use a forward migration to extend/reconcile this table.
