@@ -1,56 +1,44 @@
-Phase 1: Business Discovery (First 30 Minutes)
-Start with business questions.
-Company Overview
-Ask:
+# Phase 1: Business discovery
 
-Tell me about your business.
+**Owner:** Product manager. **Participants:** Sponsor, operations lead, sales/customer support representative. **Timebox:** First 30 minutes of discovery.
 
-What products do you sell?
+## Objective and known context
 
-How long have you been operating?
+Define how the business makes money and fulfills a customer promise before discussing features. The confirmed brief is a custom production e-commerce platform using the stack recorded in [the planning index](../README.md). Company identity, product category, sales volume, customer demographics, and current systems have not been supplied.
 
-Online only or online + physical store?
+Working model: a single merchant selling physical goods in Bangladesh, in BDT, with one stock location. Validate D01-D03; do not present this as an existing business profile.
 
-Who are your customers?
+## Meeting sequence
 
+| Minutes | Topic | Questions and evidence |
+| --- | --- | --- |
+| 0-5 | Company and commercial model | What is sold, to whom, through which channels? Ask for catalog examples and the operating entity |
+| 5-12 | Customer journey | How do buyers find, compare, order, pay, and get support? Walk through one real order |
+| 12-20 | Fulfillment and finance | Who checks stock, packs, ships, handles returns, and reconciles money? Review redacted records |
+| 20-25 | Goals and constraints | Which outcomes matter in the next six months? What cannot change at launch? |
+| 25-30 | Validate understanding | Read back workflow, risks, owners, and the next evidence requests |
 
-Business Process
-Ask:
+## Workflow to document
 
-How do customers place orders today?
+Discovery -> product selection -> stock and price confirmation -> checkout -> verified payment -> fulfillment approval -> pick and pack -> courier handoff -> delivery -> support or return -> refund and settlement reconciliation.
 
-What happens after an order is placed?
+For each step record the actor, system or spreadsheet, input, output, typical delay, exception, and escalation owner. Capture failed payments, out-of-stock orders, delivery failures, and damaged returns separately.
 
-How do you manage inventory?
+## Business record
 
-How do you handle deliveries?
+| Field | Current planning position | Confirmation owner |
+| --- | --- | --- |
+| Business name and contracting entity | Not provided | Sponsor |
+| Product categories and restrictions | Not provided; physical goods assumed | Product owner |
+| Sales channels | Website proposed; physical stores/social channels unknown | Sales |
+| Customers and service areas | Bangladesh assumed; segments and delivery coverage unknown | Sales + operations |
+| Revenue and margin model | Retail sales assumed; actual margins and costs unknown | Finance |
+| Existing operations | No evidence supplied | Operations |
+| Success definition | Fewer order errors, reliable payments/stock, faster fulfillment proposed | Sponsor |
+| Constraints | Technology stack supplied; budget and launch date unknown | Sponsor |
 
-How do you manage customer support?
+## Outputs and completion
 
-Draw the workflow.
-Example:
-Customer
+Produce a one-page business summary, current workflow, stakeholder list, evidence requests, and updated D01-D03/D12 assumptions. Request aggregated or redacted operational evidence; avoid copying customer personal data into planning documents.
 
-↓
-
-Website
-
-↓
-
-Order
-
-↓
-
-Inventory Check
-
-↓
-
-Packaging
-
-↓
-
-Delivery
-
-↓
-
-Customer
+Complete when operations confirms the workflow and the sponsor names the business outcome owner. Do not promise an exact price, delivery date, or feature list in this meeting.

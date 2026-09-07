@@ -1,0 +1,14 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "packages/platform"
+    },
+    {
+      "path": "apps/commerce-api"
+    },
+    {
+      "path": "apps/commerce-worker"
+    }
+  ]
+}

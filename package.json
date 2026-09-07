@@ -1,0 +1,44 @@
+{
+  "name": "luic-commerce",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Synthetic local commerce foundation (U01/B002)",
+  "engines": {
+    "node": "24.19.0",
+    "npm": "11.17.0"
+  },
+  "packageManager": "npm@11.17.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc -b --pretty false",
+    "test": "npm run build && jest --runInBand",
+    "start:api": "node apps/commerce-api/dist/main.js",
+    "start:worker": "node apps/commerce-worker/dist/main.js",
+    "local:api": "node --env-file=.local/api.env apps/commerce-api/dist/main.js",
+    "local:worker": "node --env-file=.local/worker.env apps/commerce-worker/dist/main.js",
+    "check:boundaries": "node scripts/check-boundaries.cjs",
+    "check": "npm run build && npm run check:boundaries && npm run check:migrations && jest --runInBand",
+    "db:local": "node scripts/local-postgres.cjs",
+    "db:migrate": "npm run build && node scripts/migrate.cjs local",
+    "db:migrate:test": "npm run build && node scripts/migrate.cjs test",
+    "check:migrations": "node scripts/check-migration-tooling.cjs",
+    "verify:linux": "node scripts/verify-postgres.cjs"
+  },
+  "devDependencies": {
+    "@types/express": "5.0.6",
+    "@types/node": "24.13.3",
+    "@types/pg": "8.23.1",
+    "drizzle-kit": "0.31.10",
+    "jest": "30.5.1",
+    "typescript": "5.9.3"
+  },
+  "overrides": {
+    "@esbuild-kit/core-utils": {
+      "esbuild": "0.25.12"
+    }
+  }
+}

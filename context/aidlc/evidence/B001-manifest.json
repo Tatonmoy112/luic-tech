@@ -1,0 +1,211 @@
+{
+  "bolt": "B001",
+  "profile": "DEV-PHYSICAL-BD",
+  "profileRevision": 1,
+  "configVersion": 1,
+  "schema": null,
+  "observedHost": {
+    "node": "v24.19.0",
+    "platform": "win32",
+    "arch": "x64",
+    "osRelease": "10.0.26200",
+    "nodeExecutableSha256": "3602f2bb1a10f2cbab4c36886218a33c1ab3db87290e73b033c46c77147d0237"
+  },
+  "packageManager": "npm@11.17.0",
+  "lockSha256": "cf46ce328961db8ba229bef30f734716370b1f303542b4fcbec419b05ef39fff",
+  "artifactSetSha256": "e75a8fbd13de8c51416bb0cb4258f90c95fb3c084a3d9af423056f13d409b4f8",
+  "dependencies": [
+    {
+      "name": "@nestjs/common",
+      "declaredVersion": "11.2.3",
+      "resolvedVersion": "11.2.3",
+      "integrity": "sha512-obdauJXHfthhepbV+LpGe88OeBlR/Kw9lwjLo0Utzc//agoLXYb9DUGhPQWtm81IpBWMv+19eiwcve9MsBZwXA==",
+      "registryArtifact": "https://registry.npmjs.org/@nestjs/common/-/common-11.2.3.tgz"
+    },
+    {
+      "name": "@nestjs/core",
+      "declaredVersion": "11.2.3",
+      "resolvedVersion": "11.2.3",
+      "integrity": "sha512-vkA9/Ja0Z3hvqXErSa+HaxrfF+cNXthNFi8VPNEKVli4rMd009yExAl0gLmko/Kf8peDXr72u1RN+j9Da2ukHg==",
+      "registryArtifact": "https://registry.npmjs.org/@nestjs/core/-/core-11.2.3.tgz"
+    },
+    {
+      "name": "@nestjs/platform-express",
+      "declaredVersion": "11.2.3",
+      "resolvedVersion": "11.2.3",
+      "integrity": "sha512-YFQvRXT2de1qNL9LJPUBQ31+RsfI4cJ+sbpU9ENM/hDCgoHSEhm7oxUuGGKmhTZBNZEYm8mDYdfoTFmAH1LIJg==",
+      "registryArtifact": "https://registry.npmjs.org/@nestjs/platform-express/-/platform-express-11.2.3.tgz"
+    },
+    {
+      "name": "@types/express",
+      "declaredVersion": "5.0.6",
+      "resolvedVersion": "5.0.6",
+      "integrity": "sha512-sKYVuV7Sv9fbPIt/442koC7+IIwK5olP1KWeD88e/idgoJqDm3JV/YUiPwkoKK92ylff2MGxSz1CSjsXelx0YA==",
+      "registryArtifact": "https://registry.npmjs.org/@types/express/-/express-5.0.6.tgz"
+    },
+    {
+      "name": "@types/node",
+      "declaredVersion": "24.13.3",
+      "resolvedVersion": "24.13.3",
+      "integrity": "sha512-Dh8vAsV36ig5wa9OX4pXvMc9D3Veibfw2wix0CUwYODLD8nkj9UsLjASr49nPg+2eKzxhBV+v7L8pXvT4e639Q==",
+      "registryArtifact": "https://registry.npmjs.org/@types/node/-/node-24.13.3.tgz"
+    },
+    {
+      "name": "express",
+      "declaredVersion": "5.2.1",
+      "resolvedVersion": "5.2.1",
+      "integrity": "sha512-hIS4idWWai69NezIdRt2xFVofaF4j+6INOpJlVOLDO8zXGpUVEVzIYk12UUi2JzjEzWL3IOAxcTubgz9Po0yXw==",
+      "registryArtifact": "https://registry.npmjs.org/express/-/express-5.2.1.tgz"
+    },
+    {
+      "name": "jest",
+      "declaredVersion": "30.5.1",
+      "resolvedVersion": "30.5.1",
+      "integrity": "sha512-3qrR8+ZXFnn7y0H2yjWQNkGGBLBY4zTRoTMAq9zJcgwLLtlyonfsCLviIXK9xuE2KgIyM+M36AFcoK2DgFR36w==",
+      "registryArtifact": "https://registry.npmjs.org/jest/-/jest-30.5.1.tgz"
+    },
+    {
+      "name": "reflect-metadata",
+      "declaredVersion": "0.2.2",
+      "resolvedVersion": "0.2.2",
+      "integrity": "sha512-urBwgfrvVP/eAyXx4hluJivBKzuEbSQs9rKWCrCkbSxNv8mxPcUZKeuoF3Uy4mJl3Lwprp6yy5/39VWigZ4K6Q==",
+      "registryArtifact": "https://registry.npmjs.org/reflect-metadata/-/reflect-metadata-0.2.2.tgz"
+    },
+    {
+      "name": "rxjs",
+      "declaredVersion": "7.8.2",
+      "resolvedVersion": "7.8.2",
+      "integrity": "sha512-dhKf903U/PQZY6boNNtAGdWbG85WAbjT/1xYoZIC7FAY0yWapOBQVsVrDl58W86//e1VpMNBtRV4MaXfdMySFA==",
+      "registryArtifact": "https://registry.npmjs.org/rxjs/-/rxjs-7.8.2.tgz"
+    },
+    {
+      "name": "typescript",
+      "declaredVersion": "5.9.3",
+      "resolvedVersion": "5.9.3",
+      "integrity": "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==",
+      "registryArtifact": "https://registry.npmjs.org/typescript/-/typescript-5.9.3.tgz"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": ".env.example",
+      "sha256": "a5223869904205e92769275ba8a4f16cf3674896bd7cdb886ad109ddebbd8c82"
+    },
+    {
+      "file": ".env.worker.example",
+      "sha256": "8e308d4e24dc65c2a22725da33a5af36d49a32b3281657d470b0e1a7711997af"
+    },
+    {
+      "file": ".gitattributes",
+      "sha256": "0f31b1a2d32fb9d3f06cad36a16036bdf497c06dda872bf7bebd4654dcba24ab"
+    },
+    {
+      "file": ".gitignore",
+      "sha256": "d8758ef26da05b1effeb3f9398aebcbc7e3a044466744e07d447595bd0c954de"
+    },
+    {
+      "file": ".node-version",
+      "sha256": "7e8a2fa94951112b894a3dbe3d05efef5e9263741fa49125f0a70f40fedab4cc"
+    },
+    {
+      "file": ".npmrc",
+      "sha256": "d7f45cdb0b3f9d6c4d75073c811ef42acd4412f595cd2645b322d021021dd09a"
+    },
+    {
+      "file": "apps/commerce-api/package.json",
+      "sha256": "214aedcd0c54ce68c7a306f755f121e161f1649d140f7fe2c4a95cd87f5aa477"
+    },
+    {
+      "file": "apps/commerce-api/src/application.ts",
+      "sha256": "2c42a57366811a2a5af5529fe95ff9d78059fa89ac2096ad235d6f540cec8fd5"
+    },
+    {
+      "file": "apps/commerce-api/src/main.ts",
+      "sha256": "08432d44fc90d9c6627d73f947314c4d5f853c36cd62c61e02d953d986084eae"
+    },
+    {
+      "file": "apps/commerce-api/tsconfig.json",
+      "sha256": "092e416870c8a3270bf908e5e51844b6c5087145b45c227658bf36cc8be17b55"
+    },
+    {
+      "file": "apps/commerce-worker/package.json",
+      "sha256": "c3d4de8aa1e195d763d6457c2e85949d9c1785332eeda56a33d8215611459d6c"
+    },
+    {
+      "file": "apps/commerce-worker/src/application.ts",
+      "sha256": "6fcb2caa38ed43df4807f7578ec0d984ad9c1921f8275df2398cd85b2e90bd51"
+    },
+    {
+      "file": "apps/commerce-worker/src/main.ts",
+      "sha256": "111b589b6a1666bf0af5efdb4d3af0c5018b2534427446ef04ac4a721dd2677d"
+    },
+    {
+      "file": "apps/commerce-worker/tsconfig.json",
+      "sha256": "092e416870c8a3270bf908e5e51844b6c5087145b45c227658bf36cc8be17b55"
+    },
+    {
+      "file": "jest.config.cjs",
+      "sha256": "4ead539082bc45f5c0b1e93f1b30989da3879844e9065d0cfd73710848d615f0"
+    },
+    {
+      "file": "package-lock.json",
+      "sha256": "cf46ce328961db8ba229bef30f734716370b1f303542b4fcbec419b05ef39fff"
+    },
+    {
+      "file": "package.json",
+      "sha256": "cac0388c5d7b1f010aee68dbd7739d2da45adafb56603288798b9ecdffad8a93"
+    },
+    {
+      "file": "packages/platform/package.json",
+      "sha256": "1f16a349be25113f54e4b7e660784ed8125ddac81a28fa5967bc9987045eaa65"
+    },
+    {
+      "file": "packages/platform/src/configuration.ts",
+      "sha256": "1bd619e4b8de4d2ffb903bc24571b89e1f810b4815f16c7875c84fc97dff8062"
+    },
+    {
+      "file": "packages/platform/src/index.ts",
+      "sha256": "eabb8ed4280b4fe28042e3e44a46e001c82e958f76c394f34749930653ec6924"
+    },
+    {
+      "file": "packages/platform/src/lifecycle.ts",
+      "sha256": "d9b309a7fa60eb0327197fcfa02f595ede62e59195354e7620f382ccecddb03d"
+    },
+    {
+      "file": "packages/platform/tsconfig.json",
+      "sha256": "b17127e2cf2edc1a3936c2c81d3626462f720dc73777218c83341b55bde9e9a7"
+    },
+    {
+      "file": "scripts/check-boundaries.cjs",
+      "sha256": "ac74517aa1266b61a1f693b7e52f1f3bb0bad8f67ac13e8192d146e0cb4eac0e"
+    },
+    {
+      "file": "scripts/runtime-inventory.cjs",
+      "sha256": "ce0d49406e2f2851da7d5b523c29b8efa8deca557f1939f5655dad648e66a351"
+    },
+    {
+      "file": "scripts/verify-linux.cjs",
+      "sha256": "2c1a3fd58e60bf70e1c902472e1b8b9398dc468a85dbab1740aa28ae61d68c38"
+    },
+    {
+      "file": "tests/configuration.test.cjs",
+      "sha256": "dcd47dbda7d5c69ce375f3ac1753ce952a5715b6011f5ca62b6722d4990d20f5"
+    },
+    {
+      "file": "tests/helpers.cjs",
+      "sha256": "631e261ee2546d02e2ac3344e4d94566e2a21aca1b54dec6dcb231fe8b736c35"
+    },
+    {
+      "file": "tests/lifecycle.test.cjs",
+      "sha256": "15bdd9216bfa8cc9466f2f47ae36cbb3d123147bedbf86f2d742aa3156482707"
+    },
+    {
+      "file": "tsconfig.base.json",
+      "sha256": "aa4df33a63c6239fe5304bdd969fe0e62237b0b9beb5e71625988addb92a6247"
+    },
+    {
+      "file": "tsconfig.json",
+      "sha256": "aa3144227f70a59003595f2f89df04d97cb15e45603843b8b46a91e824052760"
+    }
+  ]
+}

@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" modified="2026-09-06T00:00:00.000Z" agent="OpenAI Codex" version="24.7.17" type="device">
+  <diagram id="1runtimetopology" name="1 Runtime topology">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="rtitle" value="Release 1 backend runtime topology" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="20" width="520" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="browser" value="Customer / staff API clients&#xA;Optional future frontend" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="provider" value="SSLCOMMERZ IPN&#xA;Browser return is informational" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="310" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="edge" value="CloudFront + WAF + TLS + routing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="290" y="120" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="web" value="Next.js web&#xA;Browser session boundary" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="590" y="100" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="api" value="NestJS API runtime&#xA;REST, authz, queries, transactions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="890" y="100" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="db" value="PostgreSQL 18&#xA;commercial authority + outbox" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="80" width="230" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="valkey" value="Valkey&#xA;replaceable acceleration" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="230" width="210" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="search" value="OpenSearch&#xA;published projection" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="350" width="210" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" value="S3 + CloudFront&#xA;private/public objects" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="470" width="210" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="dispatcher" value="Outbox dispatcher" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="880" y="300" width="210" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="sqs" value="Purpose-specific SQS queues + DLQs" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="880" y="420" width="250" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="paymentw" value="Payment / refund worker" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="540" y="330" width="220" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="notifyw" value="Notification worker" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="540" y="430" width="220" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="searchw" value="Search worker" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="540" y="530" width="220" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="filew" value="Import / export worker" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="540" y="630" width="220" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="sched" value="Scheduler / reconciler" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="880" y="610" width="230" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="email" value="Email provider" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="250" y="440" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="otel" value="OpenTelemetry + Sentry + CloudWatch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="880" y="760" width="300" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="One codebase and release artifact.&#xA;Each runtime role has separate startup, scaling, health, permissions, and failure boundary." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="700" width="600" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology1" value="HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="browser" target="edge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology2" value="web traffic" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="edge" target="web">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology3" value="trusted call + user context" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="web" target="api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology4" value="bounded callback" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="provider" target="edge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology5" value="IPN path only" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="edge" target="api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology6" value="short transactions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="api" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology7" value="bounded cache" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="api" target="valkey">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology8" value="queries" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="api" target="search">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology9" value="signed grants" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="api" target="s3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology10" value="committed outbox" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="db" target="dispatcher">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology11" value="publish stable event" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="dispatcher" target="sqs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology12" value="payment/refund" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="sqs" target="paymentw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology13" value="notifications" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="sqs" target="notifyw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology14" value="projection" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="sqs" target="searchw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology15" value="files" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="sqs" target="filew">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology16" value="validate/query/refund" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="paymentw" target="provider">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology17" value="guarded effect" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="paymentw" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology18" value="send" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="notifyw" target="email">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology19" value="outcome" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="notifyw" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology20" value="versioned document" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="searchw" target="search">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology21" value="reload authority/state" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="searchw" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology22" value="private files" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="filew" target="s3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology23" value="bounded jobs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="filew" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology24" value="candidates/guards" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="sched" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology25" value="enqueue work" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="sched" target="sqs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology26" value="signals" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="api" target="otel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology27" value="signals" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="dispatcher" target="otel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1Runtimetopology28" value="signals" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="paymentw" target="otel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="coordinator-module-map" name="2 Module dependencies">
+    <mxGraphModel fold="1" pageWidth="1800" dx="1600" tooltips="1" guides="1" connect="1" grid="1" shadow="0" math="0" pageHeight="1600" dy="1100" gridSize="10" pageScale="1" page="1" arrows="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Backend dependency direction • proposed modular monolith" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#e1d5e7;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="40" y="30" width="1680" height="70" />
+        </mxCell>
+        <mxCell id="entry" value="API controllers / queue handlers / scheduled jobs&#xA;Select a named application use case" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#dae8fc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="550" y="130" width="650" height="90" />
+        </mxCell>
+        <mxCell id="coord" value="Commerce application coordinator&#xA;T02 checkout • T04 verified payment • cancellation / fulfillment / return / refund workflows&#xA;One explicit transaction context; no additional business tables" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#fff2cc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="440" y="270" width="870" height="120" />
+        </mxCell>
+        <mxCell id="identity" value="Identity/access&#xA;8 iam tables" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#dae8fc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="40" y="480" width="330" height="105" />
+        </mxCell>
+        <mxCell id="catalog" value="Catalog/content + Media&#xA;12 catalog tables" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#dae8fc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="450" y="480" width="330" height="105" />
+        </mxCell>
+        <mxCell id="pricing" value="Pricing + Promotion&#xA;price_records + 7 pricing tables" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#dae8fc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="860" y="480" width="330" height="105" />
+        </mxCell>
+        <mxCell id="cart" value="Cart&#xA;2 sales tables" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#dae8fc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="1270" y="480" width="330" height="105" />
+        </mxCell>
+        <mxCell id="order" value="Checkout/order&#xA;9 sales tables including cancellation" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#dae8fc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="40" y="660" width="330" height="105" />
+        </mxCell>
+        <mxCell id="inventory" value="Inventory&#xA;7 inventory tables" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#dae8fc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="450" y="660" width="330" height="105" />
+        </mxCell>
+        <mxCell id="payment" value="Payment + Refund/settlement&#xA;12 finance tables" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#dae8fc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="860" y="660" width="330" height="105" />
+        </mxCell>
+        <mxCell id="fulfill" value="Fulfillment/return&#xA;7 fulfillment tables" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#dae8fc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="1270" y="660" width="330" height="105" />
+        </mxCell>
+        <mxCell id="async" value="Independent application use cases&#xA;Search • Notification • File jobs/reporting&#xA;Read owning ports; consume committed facts; never repeat allocation from payment.succeeded" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#d5e8d4;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="40" y="870" width="750" height="140" />
+        </mxCell>
+        <mxCell id="platform" value="Platform operations and foundation&#xA;6 platform control tables; transaction, audit, auth context, config, telemetry&#xA;Every business write remains inside its owning port" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#d5e8d4;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="900" y="870" width="750" height="140" />
+        </mxCell>
+        <mxCell id="legend" value="Solid arrows show permitted dependency direction, not FK relationships or event transport. The coordinator calls owning ports; leaf Order and Payment never import each other. The 15 module names and all 78 owned tables are listed in backend/13-consolidated-build-guide.md. This diagram groups modules only for readability." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#f5f5f5;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="40" y="1130" width="1680" height="130" />
+        </mxCell>
+        <mxCell id="edge1" value="commerce use case" edge="1" parent="1" source="entry" target="coord" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" value="owning port" edge="1" parent="1" source="coord" target="identity" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" value="owning port" edge="1" parent="1" source="coord" target="catalog" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4" value="owning port" edge="1" parent="1" source="coord" target="pricing" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5" value="owning port" edge="1" parent="1" source="coord" target="cart" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge6" value="owning port" edge="1" parent="1" source="coord" target="order" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge7" value="owning port" edge="1" parent="1" source="coord" target="inventory" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge8" value="owning port" edge="1" parent="1" source="coord" target="payment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge9" value="owning port" edge="1" parent="1" source="coord" target="fulfill" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge10" value="independent use cases" edge="1" parent="1" source="entry" target="async" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=1;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge11" value="unit of work / audit" edge="1" parent="1" source="coord" target="platform" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=1;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge12" value="durable work support" edge="1" parent="1" source="async" target="platform" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=1;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="3apirequestflow" name="3 API request flow">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="atitle" value="Standard protected command request flow" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="20" width="520" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" value="1 Edge admission&#xA;TLS • WAF • route • size" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="190" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" value="2 Request context&#xA;correlation • trace • deadline" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="280" y="120" width="200" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" value="3 Authenticate&#xA;surface-specific evidence" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="530" y="120" width="200" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" value="4 Resolve actor&#xA;active application account" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="780" y="120" width="210" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" value="5 Validate transport&#xA;shape • size • fields • bounds" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="120" width="220" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" value="6 Authorize&#xA;permission • ownership • scope" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="120" width="220" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="a7" value="7 Idempotency / precondition&#xA;key+hash or expected version" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="300" width="220" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="a8" value="8 Application use case&#xA;load authority • domain decision" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="300" width="220" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="a9" value="9 Short DB transaction&#xA;locks • writes • history • audit • outbox" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="760" y="300" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="a10" value="10 Post-commit work&#xA;provider / cache / queued effect" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="480" y="300" width="220" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="a11" value="11 Present response&#xA;stable DTO/problem • redaction" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="230" y="300" width="200" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="a12" value="12 Telemetry&#xA;safe outcome • duration • trace" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="300" width="150" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="db2" value="PostgreSQL authority" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="760" y="520" width="230" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="remote" value="Remote dependencies" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="480" y="520" width="220" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="err" value="At any failure:&#xA;• roll back local unit&#xA;• map stable safe error&#xA;• unknown external result becomes reconciliation&#xA;• never expose secret or claim uncertain success" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="500" width="450" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="e3APIrequestflow1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="a1" target="a2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3APIrequestflow2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="a2" target="a3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3APIrequestflow3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="a3" target="a4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3APIrequestflow4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="a4" target="a5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3APIrequestflow5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="a5" target="a6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3APIrequestflow6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="a6" target="a7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3APIrequestflow7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="a7" target="a8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3APIrequestflow8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="a8" target="a9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3APIrequestflow9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="a9" target="a10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3APIrequestflow10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="a10" target="a11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3APIrequestflow11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="a11" target="a12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3APIrequestflow12" value="commit/rollback" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="a9" target="db2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3APIrequestflow13" value="outside transaction" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="a10" target="remote">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="4checkoutandpayment" name="4 Checkout and payment">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ctitle" value="Checkout, hosted payment, callback, and allocation" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="20" width="620" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cust" value="Customer / API client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="110" width="170" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="capi" value="API checkout" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="300" y="110" width="190" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="cdb" value="PostgreSQL" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="580" y="110" width="180" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="ssl" value="SSLCOMMERZ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="850" y="110" width="190" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="pworker" value="Payment worker" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="110" width="190" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="ops2" value="Finance / operations" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="110" width="190" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="s1" value="Submit confirmed quote + Idempotency-Key" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="240" width="230" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" value="T02 atomic transaction&#xA;revalidate • reserve • snapshot order • attempt • audit • outbox" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="360" y="230" width="330" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" value="Commit pending order" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="760" y="240" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="s4" value="Claim persisted initiation intent&#xA;Create hosted session outside transaction" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="240" width="230" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="s5" value="Redirect to gateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="240" width="210" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="s6" value="IPN arrives&#xA;persist deduped redacted receipt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="430" width="250" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="s7" value="Validate with provider server API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="370" y="430" width="250" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="s8" value="Store immutable validation evidence" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="680" y="430" width="250" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="s9" value="T04 verified result&#xA;record success; resolve uncertainty hold&#xA;check excess / terminal / other holds&#xA;then allocate once if eligible" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="990" y="420" width="280" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="s10" value="Confirm or hold order&#xA;excess payment -&gt; exception" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="420" width="250" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="race" value="Expiry releases due unallocated stock once; unknown money keeps the order held.&#xA;Late success checks terminal / coupon / risk / excess before allocation.&#xA;Already-paid stock holds use a separate authorized resolution command; callback replay remains a no-op." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="370" y="650" width="570" height="195" as="geometry" />
+        </mxCell>
+        <mxCell id="truth" value="Only verified server evidence changes payment state.&#xA;Callback may win the session-result race; later response cannot downgrade success or expose an ineligible payment URL." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="650" width="500" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="e4Checkoutandpayment1" value="HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="cust" target="capi">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4Checkoutandpayment2" value="T02" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="capi" target="cdb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4Checkoutandpayment3" value="after commit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="capi" target="ssl">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4Checkoutandpayment4" value="IPN" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="ssl" target="capi">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4Checkoutandpayment5" value="validation work" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="capi" target="pworker">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4Checkoutandpayment6" value="validate/query" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="pworker" target="ssl">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4Checkoutandpayment7" value="evidence + T04" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="pworker" target="cdb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4Checkoutandpayment8" value="exception queue" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="pworker" target="ops2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4Checkoutandpayment9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="s1" target="s2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4Checkoutandpayment10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="s2" target="s3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4Checkoutandpayment11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="s3" target="s4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4Checkoutandpayment12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="s4" target="s5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4Checkoutandpayment13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="s6" target="s7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4Checkoutandpayment14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="s7" target="s8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4Checkoutandpayment15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="s8" target="s9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4Checkoutandpayment16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="s9" target="s10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="5asyncreliability" name="5 Async reliability">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="qtitle" value="Transactional outbox and duplicate-safe worker flow" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="20" width="620" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="request" value="API / domain command" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="50" y="130" width="210" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="tx" value="One PostgreSQL transaction&#xA;business + history + audit + event + fixed destination rows" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="340" y="115" width="330" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="outbox" value="Outbox event and per-destination delivery rows&#xA;stable event ID / routing version" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="760" y="130" width="230" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="disp" value="Dispatcher leases due destination rows&#xA;fenced publish completion" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="130" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="queue" value="SQS Standard queue&#xA;may duplicate/reorder" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1370" y="120" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="recv" value="Worker receives and validates envelope" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1370" y="340" width="240" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="guard" value="Reload current authority&#xA;check receipt/version/state" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="340" width="250" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="effect" value="Local effect or durable external-call intent&#xA;commits with consumer receipt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="740" y="330" width="250" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="external" value="Claim external-call intent&#xA;call outside transaction -&gt; record result" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="400" y="330" width="260" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="ack" value="Delete only after durable success" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="340" width="240" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="dlq" value="Repeated permanent failure -&gt; DLQ&#xA;review • approve • bounded replay" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="560" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="unknown" value="Unknown provider outcome:&#xA;retain state; query by stable reference&#xA;no safe lookup: finance/provider review&#xA;lease expiry never licenses blind resend" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="400" y="560" width="430" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="safety" value="Publish succeeded but marking failed can republish.&#xA;Worker crash before delete can redeliver.&#xA;Dedupe and current-state guards make both safe." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="560" width="300" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="e5Asyncreliability1" value="command" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="request" target="tx">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5Asyncreliability2" value="commit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="tx" target="outbox">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5Asyncreliability3" value="poll/lease" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="outbox" target="disp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5Asyncreliability4" value="publish" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="disp" target="queue">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5Asyncreliability5" value="at least once" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="queue" target="recv">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5Asyncreliability6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="recv" target="guard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5Asyncreliability7" value="local" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="guard" target="effect">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5Asyncreliability8" value="provider" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="guard" target="external">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5Asyncreliability9" value="durable" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="effect" target="ack">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5Asyncreliability10" value="known durable result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="external" target="ack">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5Asyncreliability11" value="redrive" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="recv" target="dlq">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5Asyncreliability12" value="ambiguous" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="external" target="unknown">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="6securityboundaries" name="6 Security boundaries">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="stitle" value="Backend trust and authorization boundaries" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="20" width="560" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="untrusted" value="Untrusted zone&#xA;browser • bots • provider traffic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="50" y="120" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" value="Edge admission&#xA;TLS • WAF • route • size • coarse rate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="380" y="120" width="260" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="web2" value="Optional frontend session boundary&#xA;API clients use verified bearer tokens&#xA;cookie clients require CSRF controls" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="730" y="120" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="api2" value="API policy boundary&#xA;token claims • app account • permission • ownership • state" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="105" width="330" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="private" value="Private workload zone&#xA;API and isolated worker roles" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="330" width="330" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="data" value="Private data zone&#xA;PostgreSQL • Valkey • OpenSearch • S3" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="700" y="330" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="external2" value="Approved external egress&#xA;Auth0 • SSLCOMMERZ • email" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="350" y="330" width="260" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="ops3" value="Named operator access&#xA;MFA • least privilege • break-glass • audit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="50" y="330" width="230" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="principle" value="A valid token proves identity evidence only.&#xA;Each use case checks active application account, current grant, target ownership/scope, aggregate state, amount threshold, and separation rule." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="350" y="560" width="700" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="redact" value="Secrets and raw PII are excluded from source, events, logs, traces and fixtures.&#xA;Necessary customer/order PII is restricted in designated business columns; provider evidence is bounded and redacted." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="560" width="360" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="e6Securityboundaries1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="untrusted" target="edge2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6Securityboundaries2" value="web routes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="edge2" target="web2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6Securityboundaries3" value="callback only" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="edge2" target="api2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6Securityboundaries4" value="trusted workload + user evidence" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="web2" target="api2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6Securityboundaries5" value="allowed command/query" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="api2" target="private">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6Securityboundaries6" value="least privilege" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="private" target="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6Securityboundaries7" value="controlled egress" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="private" target="external2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6Securityboundaries8" value="bounded operations" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="ops3" target="private">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6Securityboundaries9" value="exceptional/audited" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="ops3" target="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="cancellation-return-refund" name="7 Cancellation return refund">
+    <mxGraphModel fold="1" pageWidth="1800" dx="1600" tooltips="1" guides="1" connect="1" grid="1" shadow="0" math="0" pageHeight="1600" dy="1100" gridSize="10" pageScale="1" page="1" arrows="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Cancellation, physical returns and financial refunds • independent linked lifecycles" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#e1d5e7;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="40" y="30" width="1680" height="70" />
+        </mxCell>
+        <mxCell id="cancel" value="Cancellation request&#xA;Actor + order + reason + idempotency&#xA;Unique active request and history" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#dae8fc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="40" y="160" width="460" height="120" />
+        </mxCell>
+        <mxCell id="guard" value="Coordinator locks order and relevant roots&#xA;Recheck dispatch, payment, stock and policy" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#fff2cc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="40" y="350" width="460" height="120" />
+        </mxCell>
+        <mxCell id="hold" value="Paid / unknown: on_hold + finance work&#xA;Unpaid safe: release once and cancel&#xA;Dispatched: reject or route to return" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#dae8fc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="40" y="550" width="460" height="140" />
+        </mxCell>
+        <mxCell id="cancelEnd" value="Guarded final cancellation&#xA;Approved request alone is insufficient&#xA;Resolve required refund and unshipped allocation&#xA;History / audit / event / destinations" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#d5e8d4;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="40" y="830" width="460" height="160" />
+        </mxCell>
+        <mxCell id="ret" value="Return request and approval&#xA;Purchased-line quantity and return window&#xA;Ownership + cumulative prior quantity" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#dae8fc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="610" y="160" width="460" height="120" />
+        </mxCell>
+        <mxCell id="inspect" value="T07 receipt / inspection&#xA;Lock order, positions, return and lines&#xA;Record disposition and evidence" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#fff2cc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="610" y="350" width="460" height="120" />
+        </mxCell>
+        <mxCell id="restock" value="Sellable disposition&#xA;One stock movement + position update&#xA;Damaged / quarantined: no sellable increase" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#dae8fc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="610" y="550" width="460" height="140" />
+        </mxCell>
+        <mxCell id="returnEnd" value="Return resolution&#xA;Append return history / audit / outbox&#xA;Refund remains an independent authorized decision" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#d5e8d4;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="610" y="830" width="460" height="160" />
+        </mxCell>
+        <mxCell id="refund" value="Refund approval T08&#xA;Payment-wide and original line/component caps&#xA;Reserve balance; pre-dispatch finance hold&#xA;Order lock serializes approval and dispatch" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#dae8fc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="1180" y="160" width="460" height="120" />
+        </mxCell>
+        <mxCell id="submit" value="Claim durable refund submission intent&#xA;Commit before remote provider call&#xA;Stable reference; fenced worker claim" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#fff2cc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="1180" y="350" width="460" height="120" />
+        </mxCell>
+        <mxCell id="unknown" value="Unknown outcome&#xA;Keep refund balance reserved&#xA;Query stable reference; no safe lookup means finance/provider resolution" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#f8cecc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="1180" y="550" width="460" height="140" />
+        </mxCell>
+        <mxCell id="complete" value="Verified final result T09&#xA;Success: reserved -&gt; completed once&#xA;Verified terminal failure: policy release&#xA;History / audit / event / settlement evidence" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#d5e8d4;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="1180" y="830" width="460" height="160" />
+        </mxCell>
+        <mxCell id="rules" value="All network calls occur outside commerce transactions. Dispatch and cancellation share the order lock. Refund totals cannot exceed verified paid balance. Return inspection does not automatically refund, and refund completion does not restock. Lease expiry never proves a financial call was not sent." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#f5f5f5;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="40" y="1170" width="1680" height="140" />
+        </mxCell>
+        <mxCell id="edge1" value="" edge="1" parent="1" source="cancel" target="guard" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" value="" edge="1" parent="1" source="guard" target="hold" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" value="when resolved" edge="1" parent="1" source="hold" target="cancelEnd" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4" value="" edge="1" parent="1" source="ret" target="inspect" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5" value="" edge="1" parent="1" source="inspect" target="restock" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge6" value="" edge="1" parent="1" source="restock" target="returnEnd" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge7" value="" edge="1" parent="1" source="refund" target="submit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge8" value="ambiguous" edge="1" parent="1" source="submit" target="unknown" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge9" value="verified query result" edge="1" parent="1" source="unknown" target="complete" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge10" value="verified final result" edge="1" parent="1" source="submit" target="complete" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=1;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge11" value="authorized refund workflow" edge="1" parent="1" source="hold" target="refund" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=1;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge12" value="eligible request; separately approved" edge="1" parent="1" source="returnEnd" target="refund" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=1;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="search-reindex" name="8 Search projection reindex">
+    <mxGraphModel fold="1" pageWidth="1800" dx="1600" tooltips="1" guides="1" connect="1" grid="1" shadow="0" math="0" pageHeight="1600" dy="1100" gridSize="10" pageScale="1" page="1" arrows="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Search consistency and reindex • PostgreSQL authority / disposable search projection" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#e1d5e7;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="40" y="30" width="1680" height="70" />
+        </mxCell>
+        <mxCell id="facts" value="Catalog / price / media / stock commit&#xA;Outbox event + fixed destination rows&#xA;Independent source aggregate versions" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#dae8fc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="40" y="160" width="490" height="125" />
+        </mxCell>
+        <mxCell id="request" value="Projection-request consumer&#xA;Receipt + desired-generation increment&#xA;One product / concrete-index row per target" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#fff2cc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="650" y="160" width="490" height="125" />
+        </mxCell>
+        <mxCell id="claim" value="Claim projection row&#xA;Read generation and public facts in one&#xA;short consistent database snapshot" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#dae8fc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="1260" y="160" width="460" height="125" />
+        </mxCell>
+        <mxCell id="index" value="Close DB transaction, then index&#xA;Strict external generation version&#xA;Document or persistent tombstone" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#dae8fc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="1260" y="410" width="460" height="125" />
+        </mxCell>
+        <mxCell id="applied" value="Fence applied-generation update&#xA;Confirm stored generation on conflict&#xA;If desired is newer, schedule next pass" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#d5e8d4;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="650" y="410" width="490" height="125" />
+        </mxCell>
+        <mxCell id="query" value="Public queries and autocomplete&#xA;Cached candidates -&gt; bounded DB publication filter&#xA;API responses no-store under strict policy&#xA;Checkout rereads stock and money" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#dae8fc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="40" y="410" width="490" height="125" />
+        </mxCell>
+        <mxCell id="register" value="Reindex job: register replacement&#xA;All request consumers fan out to live + rebuild&#xA;Checkpointed full identity backfill" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#dae8fc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="40" y="730" width="490" height="140" />
+        </mxCell>
+        <mxCell id="catchup" value="Catch up and verify&#xA;Desired = applied; schema, counts,&#xA;publication and representative queries&#xA;Durable job progress / fenced worker" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#fff2cc;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="650" y="730" width="490" height="140" />
+        </mxCell>
+        <mxCell id="switch" value="Switch read alias after gate&#xA;Keep old index current for rollback window&#xA;Audit and later retire old target" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#d5e8d4;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="1260" y="730" width="460" height="140" />
+        </mxCell>
+        <mxCell id="rules" value="Never compare a stock version to a product or price version. Index name is part of the projection-state primary key. No network call occurs inside the snapshot transaction. Persistent tombstones prevent a delayed older write from resurrecting an archived product. DB publication filtering covers normal indexing lag." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=middle;spacing=12;fontSize=14;fillColor=#f5f5f5;strokeColor=#667788;">
+          <mxGeometry as="geometry" x="40" y="1110" width="1680" height="150" />
+        </mxCell>
+        <mxCell id="edge1" value="SQS may duplicate / reorder" edge="1" parent="1" source="facts" target="request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" value="" edge="1" parent="1" source="request" target="claim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" value="" edge="1" parent="1" source="claim" target="index" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4" value="" edge="1" parent="1" source="index" target="applied" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5" value="eventually searchable" edge="1" parent="1" source="index" target="query" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=1;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge6" value="" edge="1" parent="1" source="register" target="catchup" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge7" value="" edge="1" parent="1" source="catchup" target="switch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=0;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge8" value="fan-out targets" edge="1" parent="1" source="register" target="request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=1;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge9" value="check progress" edge="1" parent="1" source="catchup" target="applied" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;endFill=1;dashed=1;strokeColor=#667788;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
