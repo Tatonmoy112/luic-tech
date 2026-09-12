@@ -1,6 +1,6 @@
 # Backend-only implementation sequence
 
-**Status:** BUILD-001/002/003 In review; BUILD-004/005/006 verified and In review with evidence in B002; remaining implementation Not started.  
+**Status:** BUILD-001 through BUILD-013 implemented/verified within their bounded local Bolts, In review; human acceptance and later implementation pending.
 **Relationship:** BUILD IDs represent implementation outcomes. BE IDs in the older catalog represent design/refinement inputs.  
 **Planning unit:** One reviewable change; split a row if it cannot be implemented and verified independently.
 
@@ -97,15 +97,41 @@ No absolute delivery date is committed. Team capacity and vendor lead times are 
 
 ## Current readiness verdict
 
-Documentation is sufficiently concrete to begin a separately authorized local bootstrap and the first catalog slice, subject to executing compatibility checks. No implementation task is complete. Real integrations wait for their own account evidence; production waits for its full acceptance gate.
+The local foundation, identity and catalog slice have verified implementation evidence through B004. No task is human-accepted. AUTH-009 approved B005 revision 1; [BUILD-014/015 evidence](../../context/aidlc/bolts/B005-stock-cart.md) is implemented/verified, In review. BUILD-019 retains its BUILD-018 checkout/order dependency and remains excluded. Real integrations wait for their own account evidence; production waits for its full acceptance gate.
 
-## Current B002 task evidence
+## B002 task evidence
 
 AUTH-005 authorizes BUILD-004/005/006 using local synthetic data and PostgreSQL. [B002](../../context/aidlc/bolts/B002-foundation.md) records exact versions, checks, failures/repairs, limitations and review status. BUILD-004 delivers safe HTTP/context/body bounds/live-ready; BUILD-005 delivers restricted pg pools, reviewed Drizzle migration/rebuild and explicit atomic transactions with exact bigint; BUILD-006 delivers correlated local OTel/Sentry/logs and safe drain/acknowledgement. Existing BUILD prerequisites are unchanged; the explicit B002 instruction permits technical progression without fabricating B001 acceptance. No BUILD or ADAPT task is human-accepted. U02/BUILD-007/008 subsequently proceeded under AUTH-006; see the B003 evidence extension below.
 
 
-## Current B003 task evidence
+## B003 task evidence
 
-AUTH-006 explicitly authorizes U02 BUILD-007/008. Both tasks are implemented/verified and **In review**, with [B003 evidence](../../context/aidlc/bolts/B003-identity.md), [U02](../../context/aidlc/units/U02-identity.md) and [local contracts](09-local-identity-contracts.md). BUILD-007 supplies seven non-order IAM tables, protected deployment-only bootstrap audit and pinned local RS256 verification; BUILD-008 supplies owned profile/address CRUD, bounded exact versions, current staff grants/revocation and atomic audit. Windows 161 passed/six POSIX skips; fresh Linux/PostgreSQL all 167 passed. BE-053 through BE-060 and BE-063 through BE-067 are design references; DBT-029/031 carry the database evidence. No full task/requirement is human-accepted. BUILD-034, ADAPT-008 and guest_order_access remain deferred. Next planned local scope starts BUILD-009 with separate authorization.
+AUTH-006 explicitly authorizes U02 BUILD-007/008. Both tasks are implemented/verified and **In review**, with [B003 evidence](../../context/aidlc/bolts/B003-identity.md), [U02](../../context/aidlc/units/U02-identity.md) and [local contracts](09-local-identity-contracts.md). BUILD-007 supplies seven non-order IAM tables, protected deployment-only bootstrap audit and pinned local RS256 verification; BUILD-008 supplies owned profile/address CRUD, bounded exact versions, current staff grants/revocation and atomic audit. Windows 161 passed/six POSIX skips; fresh Linux/PostgreSQL all 167 passed. BE-053 through BE-060 and BE-063 through BE-067 are design references; DBT-029/031 carry the database evidence. No full task/requirement is human-accepted. BUILD-034, ADAPT-008 and guest_order_access remain deferred. That handoff proposed BUILD-009 next; AUTH-007 subsequently authorized U03, recorded below.
 
-BUILD-012 must reuse and extend the early staff-only platform.audit_events table (actor_staff_id/action/target_id/reason/summary/correlation_id/created_at). Reconcile the broader dictionary actor/target/change-summary fields through reviewed forward migration; preserve B003 bootstrap and staff audit. This is an implementation compatibility prerequisite, not a new duplicate audit task or authorization to execute BUILD-012.
+The B003 handoff required BUILD-012 to reuse/extend early platform.audit_events while preserving bootstrap and staff evidence. B004 now supplies this forward-migration compatibility proof, including unchanged original-field audit hash and generated dictionary aliases.
+
+## Current U03/B004 task evidence
+
+AUTH-007 explicitly authorizes U03 BUILD-009 through BUILD-013. All five tasks are **In review**, implemented and verified, with [B004 evidence](../../context/aidlc/bolts/B004-catalog.md), [U03](../../context/aidlc/units/U03-catalog.md), [local contracts](10-local-catalog-contracts.md) and the initial [OpenAPI artifact](../openapi/catalog-v1.json).
+
+| Task | Concrete implementation | Observed proof |
+| --- | --- | --- |
+| BUILD-009 | 13 catalog tables, restricted repositories, guarded reference/media/content fixtures | Fresh/upgrade/replay migrations; lifetime SKU; composite FKs; exact bigint and concurrent price interval exclusion; content/history privilege denials |
+| BUILD-010 | Draft product/variant create/edit/archive, bounded list/detail and executable OpenAPI | Wrong role, invalid fields/references, stale expected version, pagination/cursor and contract checks |
+| BUILD-011 | Publication/unpublication/archive, current price selection and anonymous eligible detail | Missing price/media/description/category rejected; draft hidden; half-open price boundary; source revocation hides public data; historical price/SKU retained |
+| BUILD-012 | Forward-compatible generic audit, scoped immutable response replay, outbox and per-destination storage | Prior audit unchanged; same/different key race; reauthorization; deterministic failure replay; full rollback on audit/event/destination failures; lost COMMIT reply resolves on exact retry |
+| BUILD-013 | Product/version/audit/event/destination/outcome in one transaction; local capture | Publish/edit and revocation races; one event per mutation; successful editor-to-anonymous demo and five pending captured deliveries |
+
+Windows full check: seven suites, 204 passed/six POSIX skips. Final clean Linux/PostgreSQL: all 210 passed, unchanged locked dependency graph/build/generation and final audit zero known vulnerabilities. The 68-input B004 manifest fixes source/schema/contract identity. BE and DBT references denote these same outcomes, not separate deliveries. No dispatcher, real media inspection, order snapshot, stock, provider, cloud or frontend is implemented by this scope. U01/U02 and all human acceptance remain pending; AUTH-007 continues for routine fixes.
+
+## U04/B005 task evidence, 12 September 2026
+
+AUTH-008 selected synthetic local BUILD-014/015 and AUTH-009 explicitly approved plan revision 1. [B005 revision 1](../../context/aidlc/bolts/B005-stock-cart.md) and [U04](../../context/aidlc/units/U04-stock-cart.md) record contracts, dependencies, ordered substeps, owner/reviewer roles, preservation and expected verification. Codex implemented/verified and performed AI self-review. Human artifact acceptance is separate and pending.
+
+| Task | Implementation status | Bounded plan / evidence required |
+| --- | --- | --- |
+| BUILD-014 | Implemented/verified, In review | Three inventory tables, current permissions, append-only adjustments/opening fixture and atomic audit/outbox/replay; prove roll-forward, floor/version/operation guards, races, rollback and unknown COMMIT |
+| BUILD-015 | Implemented/verified, In review | Two cart tables, customer/guest ownership, item lifecycle/expiry/observations and deterministic merge; prove owner denials, explicit clamp/conflict, sorted locks, persistence and replay/failure behavior |
+| BUILD-019 | Not started; excluded | Revisit after BUILD-018 and checkout/order parents/schema are ready and a later bounded Bolt is authorized |
+
+Final evidence: 33 new stock/cart cases; Windows 237 passed/six POSIX skips; fresh Linux/PostgreSQL 243 passed, final audit zero vulnerabilities after scoped Multer 2.3.0 repair. Local upgrade retained 52 prior rows; demo/ledger reconciliation and pending event capture passed. [B005 manifest](../../context/aidlc/evidence/B005-manifest.json) records 81 inputs. No parent dependency is changed; full INV-01/CART-01 and BE/DBT design references remain broader than this local slice. Frontend, providers, cloud, imports, dispatcher/cache adapters, guest order access and all ADAPT stay excluded.

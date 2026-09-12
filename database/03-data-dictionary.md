@@ -1,6 +1,6 @@
 # Development data dictionary
 
-This 78-table logical model incorporates the [backend readiness supplement](10-backend-readiness-supplement.md), including cancellation requests, per-destination delivery, durable jobs, response replay and worker claims. The editable ERD represents the proposed full model. B003 implements seven non-order IAM tables and bounded staff audit; the implemented-subset note below records its limits. Other domain schemas remain planned.
+This 78-table logical model incorporates the [backend readiness supplement](10-backend-readiness-supplement.md), including cancellation requests, per-destination delivery, durable jobs, response replay and worker claims. The editable ERD represents the proposed full model. B003/B004 implement seven non-order IAM tables, 13 catalog metadata tables and four platform tables (24 total); the implemented-subset notes below record their limits. The other 54 tables remain planned.
 
 ## How to read this dictionary
 
@@ -152,6 +152,20 @@ Several successful payment attempts may exist for an order. The schema deliberat
 10. Outbox event aggregate version corresponds to the committed aggregate update; consumer receipt and local effect commit together.
 
 
-## B003 implemented subset
+## Historical B003 implemented subset
 
 The logical model above remains the design authority. [B003](../context/aidlc/bolts/B003-identity.md) implements the seven non-order IAM tables and an early staff-only platform.audit_events subset; the other 70 table definitions remain proposed. Mutable versions are bigint and local UUID generation uses UUIDv4 pending UUIDv7 approval. Exact lengths/constraints and runtime privileges are in 0001_identity.sql. Early audit stores nonnull actor_staff_id, action, target_id (staff), reason, summary, correlation_id and created_at. BUILD-012 must preserve and extend/reconcile this representation for the generic dictionary actor/target/change-summary fields. No guest_order_access or generic audit/outbox behavior is implied by this bounded implementation.
+
+## U03/B004 implemented subset, 8 September 2026
+
+0002_catalog adds all 13 catalog metadata tables and platform.idempotency_records, platform.outbox_events and platform.outbox_deliveries, bringing the local subset to 24 logical tables. It extends existing platform.audit_events with staff/customer actor consistency, typed target metadata, safe request metadata and generated change_summary/reason_code/occurred_at aliases over the original B003 fields. Original audit values remain unchanged. The migration and [local catalog contracts](../backend/readiness/10-local-catalog-contracts.md) are authoritative for exact implemented columns, grants, checks, limits and response snapshots.
+
+Categories require an existing parent and cannot be reparented in this slice; product/variant/SKU identity and historical prices are guarded. Effective price ranges use a btree_gist exclusion, and metadata has composite ownership constraints. Published content revision mutation is denied, but content publication/inspection/delivery services remain BUILD-030. Delivery lease columns exist without a dispatcher; system audit actors and other domains await reviewed extensions. [B004 evidence](../context/aidlc/bolts/B004-catalog.md) records negative/race/rollback/migration proof. The other 54 tables remain proposed, and no full ERD or human acceptance is implied.
+
+## U04/B005 implemented subset, 12 September 2026
+
+Under AUTH-009, 0003_stock_cart adds inventory.stock_locations/stock_positions/stock_movements and sales.carts/cart_lines, bringing the implemented subset to 29 of 78 logical tables (49 remain). Exact constraints and grants are in the immutable migration; [local stock/cart contracts](../backend/readiness/11-local-stock-cart-contracts.md) define the approved fixture. The 33-case stock/cart suite, full regression (243 Linux tests), preserved local upgrade and demo passed. Human artifact acceptance remains pending.
+
+Positions start at zero and runtime balance changes occur only through an inserted movement whose resulting balances/version are independently checked by a restricted SECURITY DEFINER trigger with fixed search_path. Runtime movement UPDATE/DELETE/TRUNCATE and direct counter replacement are denied. The stock ledger adds position_version for ordered roll-forward and unique per-position versions. B005 supports opening/adjustment with zero reserved delta; reservation_line_id and its FK are deferred until parent reservation structures exist. No reservations, allocations or workflow jobs were added.
+
+Carts implement immutable customer/guest owner XOR, fixed BDT/web, one active cart/customer, merged_into_cart_id, active/merged/expired states, exact versions and request-time expiry. Cart-line unique keys, quantity and 50-line guards serialize under the parent cart lock. Terminal source lines remain as history; no purge exists. Guest hashes stay restricted and raw capabilities never enter persistent storage. Stock permissions are deployment-fixture definitions assigned through existing audited staff administration; bootstrap remains untouched.

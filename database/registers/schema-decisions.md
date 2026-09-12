@@ -49,3 +49,15 @@ DB-001 through DB-021 refine A01–A05 and D01–D14. DB-022 through DB-024 and 
 ## Decision evidence format
 
 For approval, add the date, approver, reviewed example or provider document, affected tables, compatibility impact and any replacement decision. Preserve superseded decisions for audit.
+
+## B004 local implementation refinements, 8 September 2026
+
+AUTH-007 explicitly authorized bounded local U03 implementation; Codex performed implementation and AI self-review, with human/production approval of the register still pending. [B004 evidence](../../context/aidlc/bolts/B004-catalog.md) and [local contracts](../../backend/readiness/10-local-catalog-contracts.md) record the exact 0002_catalog hash and verified behavior. This entry records local implementation facts without changing Proposed decisions into human Approved decisions.
+
+DB-003/006/007 use exact bigint minor units, product-level expected versions (including child edits) and half-open effective price intervals. For DB-021, this local slice installs trusted btree_gist in catalog to enforce variant/currency/channel exclusion under concurrency; it adds no npm dependency and does not claim managed-service/production extension approval. DB-011 stores actor/operation/key-scoped canonical requests and immutable serialized outcomes; replay reloads current authority. DB-016 supplies catalog transactional outbox/destination storage, with dispatch/consumer proof still pending. DB-017/026 retain lifetime normalized SKU and archived price facts. Category parents are immutable in this initial slice; approved-media fixtures are metadata only. BUILD-012 extends early audit via additive fields and generated aliases while preserving original B003 evidence. Local assertions passed on PostgreSQL 18.4; merchant/finance/stock/retention and broader security review remain pending.
+
+## B005 local implementation refinements, 12 September 2026
+
+AUTH-009 approved B005 plan revision 1 for synthetic local BUILD-014/015. The five-table 0003_stock_cart migration retains the 78-table target and defers reservation/allocation/order/workflow parents. Stock position_version adds a unique ordered ledger sequence; runtime cannot replace counters or rewrite movements. A SECURITY DEFINER trigger owned by commerce_migrator, with fixed pg_catalog/inventory search_path and public execution revoked, checks resulting balances and advances the position for one append. Staff permission and transactional audit/outbox/outcome remain application-command duties. No superuser runtime or optional extension was introduced.
+
+Carts add fixed web channel, active-owner uniqueness and merged_into_cart_id for terminal source/replay ownership. Owner identity cannot change; lines lock their parent and enforce the 50-line bound. Historical customer-cart lookup/retention optimization and broader distributed authorization remain later work; no full production performance/retention approval is claimed. [B005](../../context/aidlc/bolts/B005-stock-cart.md) owns verification; these local implementation facts do not promote all Proposed database decisions to human Approved status.

@@ -1,7 +1,7 @@
 # AI-DLC entry point
 
 **Adopted process:** AI-DLC for this repository, by user instruction on 6 September 2026.  
-**Current work:** U02/B003 BUILD-007/008 identity and ownership implemented/verified, In review; B001/B002/B003 human acceptance pending.
+**Current work:** U04/B005 BUILD-014/015 implemented and verified under AUTH-009, In review; U04 remains In progress with BUILD-019 deferred. U03/B004 technical verification complete; B001/B002/B003/B004/B005 human acceptance pending.
 **Execution scope:** Backend, database, workers and operations. Frontend work is excluded from the current intent.
 
 ## Method and local application
@@ -17,7 +17,7 @@ This is a documented local workflow, not an installation or unmodified copy of a
 | 1 | [Current workflow state](state.md) | Active intent, authorization, selected profile, actual progress and next action |
 | 2 | [Workflow and human decisions](workflow.md) | Phase activities, readiness, review, evidence and change control |
 | 3 | [Unit and Bolt execution map](execution-map.md) | Map all 44 BUILD tasks and 16 ADAPT additions without changing dependencies |
-| 4 | [Active U02 identity Unit](units/U02-identity.md) | Current scope, B003 evidence and exclusions; U01 foundation remains historical context |
+| 4 | [Active U04 stock/cart Unit](units/U04-stock-cart.md) and [B005 plan](bolts/B005-stock-cart.md) | Current implementation evidence, acceptance status and exclusions; U03/B004 supplies prerequisite evidence |
 | 5 | [Session guide](session-guide.md) | Start/resume/finish consistently with minimal relevant context |
 | 6 | [Evidence and decision log](audit.md) | Provenance, current authorization and review events; no invented acceptance |
 
@@ -42,4 +42,6 @@ Keep authoritative facts in their owning file and link them. AI-DLC artifacts ad
 
 The repository has substantial proposed Inception and design inputs, including the 78-table baseline and adaptable-commerce extension plans. [B001](bolts/B001-foundation.md) supplies local core evidence under AUTH-004; [B002](bolts/B002-foundation.md) extends it with HTTP, PostgreSQL and local telemetry under AUTH-005. This foundation does not implement domain commerce or optional models, or establish human/operational acceptance. Further work follows the scoped authorization and next-action record in state.
 
-[B003](bolts/B003-identity.md) subsequently supplies local identity/ownership and staff access evidence under AUTH-006. U02 remains In progress; real Auth0, guest/order access, policy administration, other Units and human acceptance remain pending.
+[B003](bolts/B003-identity.md) supplies local identity/ownership and staff access evidence under AUTH-006. [B004](bolts/B004-catalog.md) adds catalog lifecycle, exact prices, anonymous published detail and atomic audit/idempotency/outbox under AUTH-007. U03 is In review; U01/U02 remain In progress. Real identity/media, dispatcher, reservations/orders, policy administration and human acceptance remain pending. The current state identifies next eligible work and continuing fix authorization.
+
+AUTH-008 selected U04 BUILD-014/015 and AUTH-009 approved B005 revision 1 for implementation. [B005 evidence](bolts/B005-stock-cart.md) now records five tables, stock/cart APIs, 243 passing Linux tests, preservation and audit repair. Human artifact acceptance is pending; BUILD-019 remains excluded until checkout/order parents and later authorization are ready.

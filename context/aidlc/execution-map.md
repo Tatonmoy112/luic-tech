@@ -1,6 +1,6 @@
 # AI-DLC execution map
 
-**Status:** U01 and U02 In progress; B001/B002/B003 In review. U02 BUILD-007/008 implemented/verified under AUTH-006. Other Units remain Not started. This is an execution index over existing task dependencies, not a replacement backlog.
+**Status:** U01/U02 In progress; U03 In review; U04 In progress with BUILD-019 deferred. B001/B002/B003/B004/B005 In review with technical evidence; BUILD-014/015 implemented/verified under AUTH-009. Other Units remain Not started. This is an execution index over existing task dependencies, not a replacement backlog.
 
 ## Existing plan to AI-DLC lifecycle
 
@@ -47,8 +47,10 @@ Existing BE/DBT rows and requirement groups are referenced within each Bolt by t
 | B001 | U01 | Compatible pinned core, API/worker skeleton and validated local configuration | AUTH-004; DEV-PHYSICAL-BD revision 1 | [BUILD-001/002/003 evidence ready, In review](bolts/B001-foundation.md); human acceptance pending |
 | B002 | U01 | Request/error foundation, PostgreSQL transactions and basic telemetry/shutdown | AUTH-005 and verified B001 technical evidence; B001 human acceptance remains pending | [BUILD-004/005/006 evidence](bolts/B002-foundation.md); real local PostgreSQL, human acceptance pending |
 | B003 | U02 | Signed local identity, protected bootstrap, owned profiles/addresses and audited current staff grants | AUTH-006 and verified B002 technical foundation; prior human acceptance pending | [BUILD-007/008 evidence](bolts/B003-identity.md); 167 Linux tests pass, human acceptance pending; BUILD-034/ADAPT-008 excluded |
+| B004 | U03 | Catalog metadata/drafts/publication/read, exact price history and atomic audit/idempotency/outbox | AUTH-007 and verified B003 technical evidence; prior human acceptance pending | [BUILD-009 through BUILD-013 evidence](bolts/B004-catalog.md); 210 Linux tests pass, local catalog demo/event capture passed; human acceptance pending |
+| B005 | U04 | Stock ledger/adjustment and owned customer/guest cart lifecycle with deterministic merge | AUTH-008/009 and BUILD-008/009/012 technical evidence | [BUILD-014/015 evidence](bolts/B005-stock-cart.md): 243 Linux tests pass; five tables, local demo/reconciliation; human acceptance pending; BUILD-019 excluded |
 
-The [U01 record](units/U01-foundation.md) links both foundation Bolts and their evidence. Future Bolt records are created from the template when selected. Do not create hundreds of empty Bolt files or run every Unit together. The first catalog demo still requires BUILD-007 through BUILD-013 after the foundation; B001 is not a completed commerce backend.
+The [U01 record](units/U01-foundation.md) links both foundation Bolts; [U02](units/U02-identity.md) and [U03](units/U03-catalog.md) link identity and catalog evidence. [U04](units/U04-stock-cart.md) links implemented/verified B005 under AUTH-009. Next action is human review of B005 artifacts/evidence or routine authorized fixes; future U05 BUILD-016/017 requires a separate bounded instruction. BUILD-019 still requires BUILD-018 and checkout/order parents plus later bounded authorization. No later capability or human acceptance is inferred.
 
 ## Record dependencies without duplicating truth
 

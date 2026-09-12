@@ -6,13 +6,13 @@ import { SpanStatusCode } from '@opentelemetry/api';
 import { DatabaseFailure } from './database';
 import { requestContext, SafeCode, SafeRoute, Telemetry } from './telemetry';
 
-const statusCode: Record<number, SafeCode> = { 400: 'BAD_REQUEST', 401: 'UNAUTHORIZED', 403: 'FORBIDDEN', 404: 'NOT_FOUND', 412: 'PRECONDITION_FAILED', 428: 'PRECONDITION_REQUIRED',
+const statusCode: Record<number, SafeCode> = { 400: 'BAD_REQUEST', 401: 'UNAUTHORIZED', 403: 'FORBIDDEN', 404: 'NOT_FOUND', 412: 'PRECONDITION_FAILED', 428: 'PRECONDITION_REQUIRED', 422: 'UNPROCESSABLE',
   409: 'CONFLICT', 413: 'PAYLOAD_TOO_LARGE', 415: 'BAD_REQUEST', 503: 'UNAVAILABLE' };
 const titles: Record<SafeCode, string> = { OK: 'OK', BAD_REQUEST: 'Invalid request', NOT_FOUND: 'Not found',
   PAYLOAD_TOO_LARGE: 'Request too large', UNAVAILABLE: 'Service unavailable', CONFLICT: 'Conflict',
   INTERNAL_ERROR: 'Internal error', DB_BUSY: 'Database busy', COMMIT_UNKNOWN: 'Outcome unknown',
   ROLLED_BACK: 'Operation rolled back', DRAINING: 'Service stopping', UNAUTHORIZED: 'Authentication required', FORBIDDEN: 'Forbidden',
-  PRECONDITION_FAILED: 'Stale version', PRECONDITION_REQUIRED: 'Version required' };
+  PRECONDITION_FAILED: 'Stale version', PRECONDITION_REQUIRED: 'Version required', UNPROCESSABLE: 'Requirements not met', IDEMPOTENCY_MISMATCH: 'Idempotency payload mismatch' };
 function routeOf(req: Request): SafeRoute {
   const path = req.path;
   return path === '/health/live' || path === '/health/ready' ? path : 'unmatched';
@@ -94,4 +94,12 @@ export function configureHttp(app: INestApplication, telemetry: Telemetry, drain
   server.requestTimeout = 5000;
   server.headersTimeout = 5000;
   server.keepAliveTimeout = 1000;
+}
+
+export async function sendCommand(result: Promise<import('./commands').CommandResult>, req: Request, res: Response): Promise<void> {
+  const value = await result;
+  if (value.replayed) res.setHeader('idempotency-replayed', 'true');
+  if (value.status >= 400) { problem(req, res, value.status, value.body.code as SafeCode); return; }
+  if (value.body.version) res.setHeader('etag', '"' + String(value.body.version) + '"');
+  res.status(value.status).json(value.body);
 }

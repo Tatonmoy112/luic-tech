@@ -10,17 +10,28 @@ type Row = Record<string, any>;
 
 // Every access write takes this lock BEFORE reading authorization. Small local fixture;
 // future scaling can replace it only with equivalent revocation/lock-order evidence.
-export async function lockAccess(tx: TransactionContext): Promise<void> { await tx.query('SELECT pg_advisory_xact_lock(2002, 1)'); }
+export async function lockAccess(tx: Pick<TransactionContext, 'query'>): Promise<void> { await tx.query('SELECT pg_advisory_xact_lock(2002, 1)'); }
 export async function audit(tx: TransactionContext, actor: string, action: string, target: string, reason: string, summary: Record<string, unknown>): Promise<void> {
   await tx.query('INSERT INTO platform.audit_events(actor_staff_id,action,target_id,reason,correlation_id,summary) VALUES($1,$2,$3,$4,$5,$6)',
     [actor, action, target, reason, requestContext.getStore()?.correlationId ?? randomUUID(), JSON.stringify(summary)]);
 }
-export async function permissions(tx: TransactionContext, staff: string): Promise<string[]> {
+export async function permissions(tx: Pick<TransactionContext, 'query'>, staff: string): Promise<string[]> {
   return (await tx.query(`SELECT DISTINCT p.code FROM iam.staff_role_assignments a
     JOIN iam.roles r ON r.id=a.role_id AND r.status='active'
     JOIN iam.role_permissions rp ON rp.role_id=r.id JOIN iam.permissions p ON p.id=rp.permission_id
     WHERE a.staff_account_id=$1 AND a.revoked_at IS NULL AND a.starts_at<=clock_timestamp()
     AND (a.ends_at IS NULL OR a.ends_at>clock_timestamp()) ORDER BY p.code`, [staff])).rows.map(r => r.code as string);
+}
+
+// Named identity port for domain commands. Caller takes its idempotency lock first;
+// this lock is retained through commit so revocation cannot overtake the command.
+export async function authorizeStaff(tx: Pick<TransactionContext, 'query'>, identity: VerifiedIdentity, permission: string): Promise<string> {
+  await lockAccess(tx);
+  if (identity.kind !== 'staff') return fail('FORBIDDEN');
+  const account = (await tx.query('SELECT id FROM iam.staff_accounts WHERE auth_issuer=$1 AND auth_subject=$2 AND status=$3',
+    [identity.issuer, identity.subject, 'active'])).rows[0];
+  if (!account || !(await permissions(tx, account.id)).includes(permission)) return fail('FORBIDDEN');
+  return account.id as string;
 }
 
 export class IdentityService {
@@ -151,4 +162,15 @@ export class IdentityService {
       return { ...updated, ...(changedAssignment ? { assignmentId: changedAssignment } : {}) };
     });
   }
+}
+
+// Cart ownership port; the row lock is shared with profile writers and status changes.
+export async function authorizeCustomer(tx: TransactionContext, identity: VerifiedIdentity): Promise<string> {
+  if (identity.kind !== 'customer') return fail('FORBIDDEN');
+  await tx.query(`INSERT INTO iam.customers(auth_issuer,auth_subject,last_authenticated_at) VALUES($1,$2,now())
+    ON CONFLICT(auth_issuer,auth_subject) DO NOTHING`, [identity.issuer, identity.subject]);
+  const row = (await tx.query(`SELECT id,status FROM iam.customers WHERE auth_issuer=$1 AND auth_subject=$2 FOR UPDATE`,
+    [identity.issuer, identity.subject])).rows[0]!;
+  if (row.status !== 'active') return fail('FORBIDDEN');
+  return row.id as string;
 }

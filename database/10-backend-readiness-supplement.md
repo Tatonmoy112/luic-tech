@@ -1,7 +1,7 @@
 # Backend readiness schema supplement
 
-**Status:** Proposed logical design correction; no SQL, Drizzle schema or migration created.  
-**Relationship:** The original model had 74 tables. These four additions and field/key refinements are now incorporated into the 78-table logical dictionary and six-page ERD. This document retains the change rationale; implementation and migration acceptance remain future work.
+**Status:** Logical design correction; B004 implements bounded outbox-delivery and idempotency refinements, In review; remaining implementation/acceptance pending.
+**Relationship:** The original model had 74 tables. These four additions and field/key refinements are now incorporated into the 78-table logical dictionary and six-page ERD. This document retains the change rationale; the B004 implementation boundary is recorded below; full migration acceptance remains pending.
 
 ## New proposed tables
 
@@ -50,3 +50,7 @@ A duplicate-safe projection-request consumer inserts its consumer receipt and in
 ## Review authority
 
 The corrected transaction walkthrough is in [database integrity](04-integrity-and-transactions.md); cross-module and transport decisions are in [backend corrections](../backend/readiness/03-contract-and-model-corrections.md). This supplement is the explicit change proposal for database implementation, and older 74-table counts describe the original model rather than the extended target.
+
+## U03/B004 implementation boundary
+
+BUILD-012 now implements platform.outbox_deliveries and the scoped idempotency response snapshot/fingerprint refinement in 0002_catalog. Catalog transactions write one immutable event plus a fixed version-1 search-projection destination atomically with product version, audit and command outcome. [B004](../context/aidlc/bolts/B004-catalog.md) proves repeated commands, scope/hash conflicts, replay reauthorization, lost COMMIT reply recovery and rollback on event/destination failure. Delivery rows remain pending. No dispatcher/consumer, dynamic routing, lease execution, workflow job, cancellation, financial attempt or projection generation behavior is implemented here. Those retain their later BUILD dependencies and acceptance gates.

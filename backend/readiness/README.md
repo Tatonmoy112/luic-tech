@@ -42,8 +42,12 @@ The original [199-task catalog](../11-backend-build-sequence.md) remains a desig
 
 ## Remaining honest limits
 
-Account access, merchant policies, actual data, staffing, dependency compatibility beyond the B001/B002 local foundation, production service availability and measured capacity remain unverified. They are assigned evidence gates rather than presented as solved facts. No frontend is needed to exercise HTTP contracts, database concurrency or workers; API clients and automated integration tests supply callers for each implemented slice.
+Account access, merchant policies, actual data, staffing, dependency compatibility beyond the verified local B001 through B004 slices, production service availability and measured capacity remain unverified. They are assigned evidence gates rather than presented as solved facts. No frontend is needed to exercise HTTP contracts, database concurrency or workers; API clients and automated integration tests supply callers for each implemented slice.
 
 ## Documentation validation
 
-Local checks verified that Markdown links resolve and table columns are consistent across backend, context and database. Both task catalogs have unique contiguous identifiers: BE-001 through BE-199 and BUILD-001 through BUILD-044. Every explicit task-ID dependency exists and precedes its task. The older catalog's mismatched semantic prerequisites and corrupted dash encoding were corrected. Runtime, concurrency, vendor and production tests remain execution-pending.
+Local checks verified that Markdown links resolve and table columns are consistent across backend, context and database. Both task catalogs have unique contiguous identifiers: BE-001 through BE-199 and BUILD-001 through BUILD-044. Every explicit task-ID dependency exists and precedes its task. The older catalog's mismatched semantic prerequisites and corrupted dash encoding were corrected. B001 through B004 now have local runtime/concurrency evidence linked from [current state](../../context/aidlc/state.md); later capability, vendor and production tests remain pending.
+
+## U04 stock/cart local evidence
+
+AUTH-009 approved B005 revision 1 for BUILD-014/015. [Local contracts](11-local-stock-cart-contracts.md), [OpenAPI](../openapi/stock-cart-v1.json) and [B005](../../context/aidlc/bolts/B005-stock-cart.md) document the five-table ledger/cart slice, scoped replay, guest ownership and deterministic merge. Existing PostgreSQL/identity/catalog facts are preserved. BUILD-019 remains excluded until BUILD-018 and checkout/order parents plus later bounded authorization are ready; no real services or optional model is enabled.

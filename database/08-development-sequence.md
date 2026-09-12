@@ -67,6 +67,8 @@
 
 ## Phase E — inventory, cart, checkout and order structures
 
+**12 September 2026 evidence pointer:** AUTH-009 / [B005](../context/aidlc/bolts/B005-stock-cart.md) implements DBT-043/044/045/048 through BUILD-014/015, reusing DBT-049/077/078/081/082. All selected structures are implemented/verified, **In review** with human acceptance pending. Migration 0003_stock_cart creates three inventory and two cart tables; reservation_line_id/FK waits for its parent. Both local/test databases upgraded, prior rows retained, and fresh Linux rebuild/243 tests passed. DBT-046/047 and BUILD-019 remain outside B005.
+
 | ID | Small outcome | Depends on | Minimum evidence |
 | --- | --- | --- | --- |
 | DBT-043 | Implement stock location structure and Release 1 location record | DBT-004, DBT-028 | Location uniqueness/status case |
@@ -179,3 +181,7 @@ The database critical path is DBT-001–012 -> DBT-013–021 -> DBT-022–028 ->
 ## U02/B003 implementation evidence
 
 DBT-029/031 have bounded local implementation evidence through BUILD-007/008 under AUTH-006: seven IAM tables, identity uniqueness, owned address/default constraints, current grants/revocation and protected staff bootstrap audit. [B003](../context/aidlc/bolts/B003-identity.md) records PostgreSQL 18.4 migration/replay/FK/role-denial/rollback and identity races; Windows 161 passed/six skips and clean Linux all 167 passed. These are design-task references to the same implementation, not separate task counts. DBT-030 guest_order_access is deferred to BUILD-018; real identity decisions and human acceptance remain pending. BUILD-012 must preserve and extend the early staff audit for the full dictionary projection.
+
+## U03/B004 implementation evidence
+
+DBT-033 through DBT-039 now have bounded local schema/repository evidence through BUILD-009/010/011: 13 catalog reference/product/variant/price/media/content tables. DBT-077/078 and DBT-081/082 have catalog-only outbox/audit integration through BUILD-012/013. [B004](../context/aidlc/bolts/B004-catalog.md) supplies expected/observed FK, lifetime SKU, current/future/concurrent price interval, published visibility, immutable content/history, restricted grant, scoped replay and injected rollback evidence. The generic audit extension preserves B003 facts. Seven Linux suites passed 210 tests; Windows passed 204/six skips. These references describe the same implementation, not duplicate task credit or full DBT acceptance: content workflow, other domain writers, consumers, fan-out dispatch, finance/stock actions, load and production review remain pending. U03/B004 is In review under AUTH-007, with human acceptance pending.

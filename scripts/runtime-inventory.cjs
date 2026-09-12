@@ -31,11 +31,11 @@ function walk(directory) {
 }
 const files = ['.gitignore', '.gitattributes', '.npmrc', '.node-version', '.env.example', '.env.worker.example',
   'package.json', 'package-lock.json', 'tsconfig.json', 'tsconfig.base.json', 'jest.config.cjs',
-  ...['apps', 'packages', 'scripts', 'tests', 'database/migrations'].flatMap(walk)].sort();
+  ...['apps', 'packages', 'scripts', 'tests', 'database/migrations', 'backend/openapi'].flatMap(walk)].sort();
 const artifacts = files.map(file => ({ file, sha256: sha256(read(file)) }));
 const inventory = {
-  bolt: 'B003', profile: 'DEV-PHYSICAL-BD', profileRevision: 1, configVersion: 2,
-  schema: { revision: '0001_identity', sha256: sha256(read('database/migrations/0001_identity.sql')) },
+  bolt: 'B005', profile: 'DEV-PHYSICAL-BD', profileRevision: 1, configVersion: 2,
+  schema: { revision: '0003_stock_cart', sha256: sha256(read('database/migrations/0003_stock_cart.sql')) },
   observedHost: { node: process.version, platform: process.platform, arch: process.arch,
     osRelease: os.release(), nodeExecutableSha256: sha256(fs.readFileSync(process.execPath)) },
   packageManager: rootPackage.packageManager,
@@ -48,7 +48,7 @@ const output = JSON.stringify(inventory, null, 2) + '\n';
 if (process.argv.includes('--write')) {
   const directory = path.join(root, 'context/aidlc/evidence');
   fs.mkdirSync(directory, { recursive: true });
-  fs.writeFileSync(path.join(directory, 'B003-manifest.json'), output);
+  fs.writeFileSync(path.join(directory, 'B005-manifest.json'), output);
   console.log(JSON.stringify({ lockSha256: inventory.lockSha256,
     artifactSetSha256: inventory.artifactSetSha256, artifacts: artifacts.length }));
 } else process.stdout.write(output);

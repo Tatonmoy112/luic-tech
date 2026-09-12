@@ -10,7 +10,7 @@ export class DatabaseFailure extends Error {
 }
 export function databaseCode(error: unknown): SafeCode {
   const code = (error as { code?: string } | null)?.code;
-  if (['23505', '23503', '23514'].includes(code ?? '')) return 'CONFLICT';
+  if (['23505', '23503', '23514', '23P01'].includes(code ?? '')) return 'CONFLICT';
   if (['40001', '40P01', '55P03', '57014', '25P03'].includes(code ?? '')) return 'DB_BUSY';
   if (['ECONNREFUSED', 'ECONNRESET', 'EPIPE', '57P01', '57P02', '57P03', '08006', '08003'].includes(code ?? '')) return 'UNAVAILABLE';
   return 'INTERNAL_ERROR';
@@ -109,4 +109,6 @@ export class Database {
 export const FOUNDATION_HASH = '699076c71a6da2cc4a7f2c88bbab2f5976fde815ac60fe978c236f8dc1f3a201';
 
 export const IDENTITY_HASH = "9d7a5f5db79ab27e7d12034882a6e921baa01070d8a66a30319a691dff45177c";
-export const MIGRATION_HASHES = Object.freeze([FOUNDATION_HASH, IDENTITY_HASH]);
+export const CATALOG_HASH = '73076c93e0c9e0b55ac8da7a8cf9aec7bafbf2bf1baaa486d0a320aaa3d64117';
+export const STOCK_CART_HASH = '3b3870573157727ecf20c6fbdc770f80f163eaabd6adecdf4cc9086f02aca329';
+export const MIGRATION_HASHES = Object.freeze([FOUNDATION_HASH, IDENTITY_HASH, CATALOG_HASH, STOCK_CART_HASH]);

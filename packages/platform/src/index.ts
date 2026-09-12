@@ -8,3 +8,4 @@ export * from './telemetry';
 export * from './work';
 export * from './foundation';
 export * from './http';
+export * from './commands';

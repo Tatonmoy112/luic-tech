@@ -12,7 +12,7 @@ for (const name of ['package.json', 'package-lock.json', 'tsconfig.json', 'tscon
   'jest.config.cjs', '.npmrc', '.env.example', '.env.worker.example']) {
   fs.copyFileSync(path.join(source, name), path.join(workspace, name));
 }
-for (const name of ['apps', 'packages', 'scripts', 'tests', 'database/migrations']) {
+for (const name of ['apps', 'packages', 'scripts', 'tests', 'database/migrations', 'backend/openapi']) {
   fs.cpSync(path.join(source, name), path.join(workspace, name), {
     recursive: true,
     filter: file => !['node_modules', 'dist'].includes(path.basename(file)),
